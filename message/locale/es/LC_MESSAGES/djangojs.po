@@ -1,0 +1,45 @@
+# Russian translation for socialchan imageboard.
+# Copyright (C) 2011 Paul Miller
+# This file is distributed under the same license as the socialchan package.
+# FIRST AUTHOR <pbagwl@gmail.com>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-17 16:45+0300\n"
+"PO-Revision-Date: 2013-10-17 17:38+0200\n"
+"Last-Translator: Paul Miller <hvar90@gmail.com>\n"
+"Language-Team: LANGUAGE <hvar90@gmail.com>\n"
+"Language: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+#: media/js/script.js:22 media/js/script.js.py:811
+msgid "Reply"
+msgstr "Responder"
+
+#: media/js/script.js
+msgid "The message was sent successfully"
+msgstr "El mensaje se ha enviado correctamente"
+
+#: media/js/script.js
+msgid "Mark read"
+msgstr "Marcar como leido"
+
+#: media/js/script.js
+msgid "Delete message"
+msgstr "Eliminar mensaje"
+
+#: media/js/script.js
+msgid "Send another message"
+msgstr "Enviar otro mensaje"
+
+#: media/js/script.js
+msgid "The message has been removed."
+msgstr "El mensaje ha sido eliminado correctamente."
+
+

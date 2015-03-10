@@ -1,0 +1,42 @@
+{% load  i18n %}
+{% if edit %}	
+ <form class="row editpost" id="editpost{{ id }}" method="post" data-post-id="{{ id }}"  >
+{% else %}
+ <form class="row newpost" id="newpost{{ id }}" method="post" data-thread-id="{{ id }}"  >
+{% endif %}	
+	{% if id %}	
+	  <input name="thread" id="thread" value="{{ id }}" type="hidden"> 
+	{% else %}
+      <input name="section" id="section" value="{{ section.slug }}" type="hidden">		
+    {% endif %}			
+	<textarea name="message" id="message{{ id }}"></textarea>	
+	{% include "menu_emoticons.html" %}				
+	<div class="div-left">
+		<span>{% trans "Picture" %}</span>
+		{% if edit %}	
+		  <input type="file"  accept="image/*;capture=camera" class="upload-image boom-active" value="upload" name="files" id="edit-files{{ id }}" ></input>
+		{% else %}
+		  <input type="file"  accept="image/*;capture=camera" class="upload-image boom-active" value="upload" name="files" id="files{{ id }}" ></input>
+		{% endif %}		
+	</div>	
+	<div class="div-right pt20">	
+	    {% if edit %}
+		   <input type="submit" class="boom-active" value="{% trans "Save" %}">
+		{% else %}	
+		   <input type="submit" class="boom-active" value="{% trans "Post" %}">
+		{% endif %}		
+		{% if not edit %}			    
+			<p class="check">
+				<input type="checkbox" id="remember-me" name="is_anonymous" id="is_anonymous" />
+				<label for="remember-me" class=" cd-style">{% trans "Anonymous" %}</label>
+			</p>
+		{% endif %}						
+	</div>				
+	<div class="pt20 uploader-files">
+		{% if edit %}	
+		   <span id="edit-upload-path{{ id }}"></span>
+		{% else %}		 
+		   <span id="upload-path{{ id }}"></span>
+		{% endif %}			
+	</div>						
+ </form>

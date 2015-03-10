@@ -1,0 +1,54 @@
+{% extends "index_base.html" %}
+{% load  i18n  %}
+
+{% block header %}
+<header class="headerv2">
+	<div class="centercontainer">
+		<h1>
+			<a href="/">SCHAN</a>
+		</h1>
+		<nav class="wellcome">
+			<ul>						 
+				<li><a class="" href="javascript:history.back()">{% trans "Back" %}</a></li>			
+				<li><a class="" href="/">Home</a></li>							
+			</ul>
+		</nav>
+	</div>
+</header>
+{% endblock %}	
+{% block content %}
+<section class="centercontainer mt20">
+	<div class="headline center-text">
+		<h3>{% trans "Edit your perfil" %}</h3>
+	</div>	
+	<form name="edit-profile" id="edit-profile"  class="form" >
+		<p class="boxdata">			
+			{% if user.profile.profile_picture %}				  
+			   <img id="image-preview" class="img-preview" src="{{ MEDIA_URL }}{{ user.profile.profile_picture}}" width="100%"  />				   
+		    {% else %}			   
+			   <img id="image-preview" class="img-preview" src="{{ STATIC_URL }}image/user.png" width="100%" />
+		    {% endif %}	
+			<div class="caption boxdata">
+				<p>
+				  <div class="login ">
+					<span>{% trans "Change you photo" %}</span>
+					<input class="upload-image boom-active" name="profile_picture" id="profile_picture" title="" type="file" />
+				  </div>
+				</p>
+			</div>
+		</p>
+		<p class="boxdata">				
+			<input type="text" placeholder="{% trans "Date of birth" %}"  onfocus="(this.type='date')" class="data2" min="1"  max="10" id="birthdate" name="birthdate"  value="{{ user.profile.birthdate|date:"Y-m-d"|default_if_none:"1990/01/01" }}">		
+		</p>
+		<p class="boxdata">				
+			<input type="text" id="country" class="data2"  placeholder="{% trans "Country" %}" name="country"  value="{{ user.profile.country }}">
+		</p>
+		<p class="boxdata">			
+			<textarea maxlength="200"  class="data2" id="phrase" name="phrase" style="height:90px" placeholder="{% trans "Phrase which describes you" %}" >{{ user.profile.phrase }}</textarea>	
+		</p>
+		<p class="boxdata">	
+			<input type="submit" class="boom-active width100" value= "{% trans "Save" %}" id="submit-button" /> 
+		</p>
+	</form>	
+</section>
+{% endblock %}

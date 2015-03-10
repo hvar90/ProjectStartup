@@ -1,0 +1,6 @@
+{% load i18n humanize %}
+{% trans "Someone, hopefully you, signed up for a new account at socialCHAN.com using this email address. If it was you, and you'd like to confirm your email, click the link below or copy and paste it into your web browser's address bar" %} :
+
+www.socialchan.com/accounts/activate/{{ activation_key }}/
+
+{% trans  "If you didn't request this, you don't need to do anything; you won't receive any more email from us, and the account will expire automatically in" %}  {{ expiration_days|apnumber }} {% trans "days" %} .

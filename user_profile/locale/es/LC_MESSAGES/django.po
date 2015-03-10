@@ -1,0 +1,746 @@
+# Russian translation for socialchan imageboard.
+# Copyright (C) 2011 Paul Miller
+# This file is distributed under the same license as the socialchan package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-17 16:45+0300\n"
+"PO-Revision-Date: 2013-10-17 17:38+0200\n"
+"Last-Translator: Paul Miller <hvar90@gmail.com>\n"
+"Language-Team: LANGUAGE <hvar90@gmail.com>\n"
+"Language: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+
+#: user_profile/user:28
+msgid "is now your friend"
+msgstr "es ahora tu amigo"
+
+#: user_profile/user:28
+msgid "Sent invitation"
+msgstr "Se envio una solicitud"
+
+#: user_profile/user:28
+msgid "Delete friend"
+msgstr "Eliminar amigo"
+
+#: user_profile/user:28
+msgid "Add friend"
+msgstr "Agregar a amigos"
+
+#: user_profile/user:28
+msgid "Friends"
+msgstr "Amigos"
+
+#: user_profile/user:28
+msgid "has sent you a message"
+msgstr "te ha enviado un mensaje"
+
+#: user_profile/user:28
+msgid "Do you want to meet this user? invite his so that he  be your friend and can speak on private chat"
+msgstr "Quieres conocer a este usuario? invitalo a ser tu amigo y puedas hablar por chat privado"
+
+#: user_profile/user:28
+msgid "view message"
+msgstr "ver mensaje"
+
+#: user_profile/user:28
+msgid "You do not have notifications at this moment"
+msgstr "No tienes notificaciones por el momento"
+
+#: user_profile/user:28
+msgid "new publication on the group"
+msgstr "publicacion nueva en el grupo"
+
+#: user_profile/user:28
+msgid "Notifications"
+msgstr "Notificaciones"
+
+#: user_profile/user:28
+msgid "do you accept to be his friend?"
+msgstr "aceptas ser su amigo?"
+
+#: user_profile/member_list:28
+msgid "No persons registered"
+msgstr "No hay personas registradas"
+
+#: user_profile/member_list:28
+msgid "Click here to view user profile"
+msgstr "Presiona aqui para ver su perfil"
+
+#: user_profile/member_list:28
+msgid "Search friends"
+msgstr "Buscar amigos"
+
+#: user_profile/edit_profile:28
+msgid "You do not have friends by the moment, invite someone so that he be your friend"
+msgstr "No tienes amigos por el momento, invita a alguien para que sea tu amigo"
+
+#: user_profile/edit_profile:28
+msgid "Click here to open the chat"
+msgstr "presion aqui para abrir el chat"
+
+#: user_profile/edit_profile:28
+msgid "View user profile"
+msgstr "Ver perfil"
+
+#: user_profile/edit_profile:28
+msgid "Your friends"
+msgstr "Tus amigos"
+
+#: user_profile/edit_profile:28
+msgid "Change you photo"
+msgstr "Cambia tu foto"
+
+#: user_profile/edit_profile:28
+msgid "Edit your perfil"
+msgstr "Edita tu perfil"
+
+#: api1/user_profile/views:28
+msgid "Username does not exist"
+msgstr "Usuario no existe"
+
+#: api1/user_profile/views:28
+msgid "Registration is closed"
+msgstr "El registro se encuentra cerrado"
+
+#: api1/user_profile/views:28
+msgid "Invalid password"
+msgstr "Contraseña incorrecta"
+
+#: api1/user_profile/views:40
+msgid "The verification of the password failure, type the password again"
+msgstr "La verificacion de la contraseña  ha fallado, escriba la contraseña de nuevo"
+
+#: api1/user_profile/views:76
+msgid "Invalid username or password"
+msgstr "Nombre de usuario o contraseña invalida"
+
+#: board/fields.py:17
+msgid "Invalid captcha"
+msgstr "Invalida captcha"
+
+#: board/models.py
+msgid "Birthdate"
+msgstr "Fecha de nacimiento"
+
+#: board/models.py
+msgid "Profile picture"
+msgstr "Foto de perfil"
+
+#: board/models.py
+msgid "Languajes"
+msgstr "Idiomas"
+
+#: board/models.py
+msgid "Phrase"
+msgstr "Frase"
+
+#: board/models.py:492
+msgid "User owned sections"
+msgstr "Usuario jefe de secciones"
+
+#: board/models.py:495
+msgid "User profile"
+msgstr "Perfil de usuario"
+
+#: board/models.py:496
+msgid "User profiles"
+msgstr "Perfiles de usuarios"
+
+#: templates/index.html:6 templates/navigation.html:4
+msgid "Main page"
+msgstr "Pagina pricipal"
+
+#: templates/index.html:112 templates/navigation.html:8
+#: templates/sidebar.html:23 templates/storage.html:3
+msgid "Feed"
+msgstr "Canal favoritos"
+
+#: templates/index.html
+msgid "Feeds"
+msgstr "Canales"
+
+#: templates/index_base.html
+msgid "New"
+msgstr "Nuevo"
+
+#: templates/index_base.html
+msgid "New notification!"
+msgstr "Nueva notificacion!"
+
+#: templates/index.html
+msgid "Look at the groups that have created"
+msgstr "Mira los grupos que han creado"
+
+#: templates/index.html
+msgid "Participates in our groups"
+msgstr "Participa en nuestros grupos"
+
+#: templates/index.html
+msgid "Join us"
+msgstr "Unete"
+
+#: templates/index.html
+msgid "Groups"
+msgstr "Grupos"
+
+#: templates/index.html
+msgid "Password"
+msgstr "Contraseña"
+
+#: templates/index.html
+msgid "Create"
+msgstr "Crear"
+
+#: templates/index.html
+msgid "Find a group, come and participate in the topics that you like"
+msgstr "Encuentra un grupo, entra y participa en los temas que más te gusten"
+
+#: templates/index.html
+msgid "Create your groups here"
+msgstr "Crea tus grupos aquí"
+
+#: templates/index.html
+msgid "Create your group already !!"
+msgstr "Crea tu grupo ya !!"
+
+#: templates/index.html
+msgid "Share your profile with friends"
+msgstr "Comparte tu perfil con tus amigos"
+
+#: templates/index.html:126
+#: templates/faq.html
+msgid ""
+"In Schan you can participate on groups "
+"and discuss about your favorite topics, "
+"if you partipate on a group you will find people with similar interests "
+"and you expand your network of contacts, "
+"you can also share your photos and videos to create funny discussions. "
+"And all this is free"
+msgstr ""
+"En Schan tu puedes participar en grupos "
+"y discutir sobre tus temas favoritos, "
+"si entras a un grupo encontraras personas con tus mismos intereses "
+"y ampliaras tu red de contactos, "
+"Tambien puedes compartir fotos y videos para crear divertidas discusiones. "
+"Y todo esto es gratis"
+
+
+#: templates/faq.html
+msgid ""
+"Do not share, ask fo or links content that violates laws Do not ask or share personal information from others, such "
+"as names, addresses, emails, social networking accounts, etc. Spam / flood is not allowed. Are not allowed to post adult content."
+msgstr ""
+"No compartas,  pidas o enlaces contenido que viole las leyes. No pidas o compartas información personal de otras "
+"personas, como apellidos, direcciones, emails, cuentas de redes sociales, etc. No se permite el spam/flood. No se permite postear"
+" contenido adulto."
+
+#: templates/faq.html
+msgid ""
+"Is important to the quality of publications Please feel free to talk about whatever you want, but keep in mind that the more"
+" interesting, fun and creative are conversations more people will be encouraged to participate."
+msgstr ""
+"Es importante la calidad de las publicaciones. Siéntete libre de hablar de lo que desees, pero ten en cuenta que cuanto más interesantes,"
+" divertidas y creativas sean las conversaciones más personas se animarán a participar."
+
+#: templates/faq.html
+msgid ""
+"If your image, comment or thread was eliminated do not post again, is very likely that deleted because violated "
+"the rules of this site and was removed by the administrators and moderators. If you were temporarily banned not shirk the ban, "
+"so you could be permanently banned."
+msgstr ""
+"Si tu imagen, comentario o hilo fue eliminado no lo publiques de nuevo, es muy probablemente que fue eliminado por que violaba "
+"las reglas de este sitio y fue eliminado por los administradores y moderadores. Si fuiste baneado temporalmente no evadas el ban,"
+" por ello podrías ser baneado permanentemente."
+
+#: templates/faq.html
+msgid ""
+"Respects the administrators and moderators and not act with bad intentions. The staff reserves the right to remove some posting "
+"that encourages attacks on other sites or undermines the integrity of the people."
+msgstr ""
+"Respeta a los administradores y moderadores y no actúes con malas intenciones. El staff se reserva el derecho a eliminar "
+"cualquier publicacion que fomente ataques a otros sitios o atente contra la integridad de las personas."
+
+#: templates/faq.html
+msgid "Write with correct spelling and punctuation. Do not care if you forgot to a tilde, but your posts should be understood."
+msgstr "Escribe con buena ortografía y signos de puntuación. No importa si olvidas alguna tilde, pero tus posts deben comprenderse."
+
+#: templates/faq.html
+msgid "To reply to a thread without climbing to the top of the board, write sage in the email field."
+msgstr "Para responder un hilo sin subir al principio del tablón, escribe sage en el campo de email."
+
+#: templates/faq.html
+msgid "To quote a post, type '>>' (without the quotes) and then its ID number, or directly click its ID number. This will create a link to the post you want to quote and is added to your post."
+msgstr "Para citar un post, escribe '>>' (sin las comillas) y a continuación su número de ID, o directamente haz click en su número de ID. Esto creará un link al post que deseas citar y se añadirá a tu post."
+
+#: templates/faq.html
+msgid "To remove your post, click the delete button posts and then click on the post you want to delete."
+msgstr "Para eliminar tu post haz click el botón eliminar posts y luego haz click en el post que quieras eliminar."
+
+#: templates/faq.html
+msgid "How to write in:"
+msgstr "Como escribir en:" 
+
+#: templates/faq.html
+msgid ""
+"We have a team of moderators and we will help with whatever you need. If you think someone has uploaded your copyrighted "
+"images or illegal content, or images or comments that compromise your privacy, you can request that we delete. Send us an email, "
+"we will review and delete as soon as possible. Please give a reason why images or comments should be deleted."
+msgstr "" 
+"Tenemos un buen equipo de moderadores y sentido de la responsabilidad social. Si crees que alguien ha subido tus "
+"imágenes con copyright, o contenido ilegal, o imágenes o comentarios que comprometen tu privacidad, puedes pedir que los eliminemos."
+" Selecciona los posts y clicka en el botón 'Reportar' que hay en el pie de página del tablón, o envíanos un email, los revisaremos y"
+" borraremos lo antes posible. Por favor danos una razón, por qué las imágenes o comentarios deberían ser borrados."
+
+#: templates/faq.html
+msgid ""
+"Socialchan store information from users only to show its publications and managing boards. The contacts of each person will only"
+" be seen by the account owner. We value the privacy of users and therefore sensitive information (such as IP) never will be made public"
+" to third parties, except to cooperate with the authorities if necessary."
+msgstr "" 
+"Socialchan guarda información de los usuarios únicamente para mostrar sus publicaciones y gestionar los tablones. Los contactos"
+" de cada persona solo seran visto por el dueño de la cuenta. Valoramos mucho la privacidad de los usuarios y por eso "
+"información sensible (como la IP) nunca será pública para terceras personas, excepto para cooperar con las autoridades en caso necesario."
+
+#: templates/faq.html
+msgid ""
+"Socialchan assumes no responsibility for posts made in this site: the responsibility of the publications and images corresponding to"
+" the users. However, we do our best to moderate and remove from our servers some content that does not comply with the rules and the law."
+" Socialchan is not responsible for false or misleading information that may be published by their users or for some damage "
+"that may occur, whether intellectual property, mental or physical harm. Administrators and moderators of Socialchan have the right to "
+"deny access to our site to some user that in his opinion does not meet the Rules and this Legal Notice."
+" Use Socialchan is a privilege, not a right. Failure to follow these rules, regulations and policies will result in removal and"
+" expulsion from the user of the site (IP blocking). All trademarks and copyrights on this site are property of their respective owners. "
+"The images and comments posted are the responsibility of the users. The opinions posted on Socialchan do not have to represent the views of "
+"the administration nor staff members."
+msgstr "" 
+"Socialchan no asume ninguna responsabilidad por los mensajes publicados en este sitio: la responsabilidad de las publicaciones "
+"y las imágenes corresponde a los usuarios. No obstante, hacemos todo lo posible para moderar y eliminar de nuestros "
+"servidores todo contenido que no cumpla con las normas y la ley. Socialchan no es responsable de la información falsa o engañosa que pueda "
+"ser publicada por los usuarios o por algun daño que pueda ocurrir, ya sea la propiedad intelectual, daño mental o físico. Los administradores"
+" y moderadores de Socialchan tienen el derecho a negar el acceso a nuestro sitio a cualquier usuario que en su opinión no cumpla "
+"las normas y el presente Aviso Legal. "
+"Usar Socialchan es un privilegio y no un derecho. Incumplir con estas normas, reglamentos y políticas se traducirá en la eliminación y " 
+"la expulsión del usuario del sitio (bloqueo de IP). Todas las marcas y derechos en esta página son propiedad de sus respectivos dueños. " 
+"Las imágenes y los comentarios publicados son responsabilidad de los usuarios. Las opiniones publicadas en Socialchan no tienen que representar" 
+" los puntos de vista de la administración ni los miembros del personal."
+
+#: templates/faq.html
+msgid "Send us an email to socialchan14@gmail.com if you have comments or suggestions and we'll reply as soon as possible. Thank you."
+msgstr "Envíanos un email a socialchan14@gmail.com si tienes comentarios o sugerencias y te contestaremos lo antes posible. Gracias." 
+
+#: templates/faq.html
+msgid "If you want to identify a anonymous post you can do the following:"
+msgstr "Si quieres identificar una publicación anónima puedes hacer los siguiente." 
+
+#: templates/faq.html
+msgid "Write !OP in the poster field if you are the owner of the post will be displayed !!OP in the post"
+msgstr "Escribir !OP en el campo anunciante y si tu eres el dueño de la publicacion se mostrara !!OP en la publicacion" 
+
+#: templates/faq.html
+msgid "When you add the (#) symbol to the end of your name followed by a word, like a password that only you know, it scrambles the word into a code. That way it's undetectable and can be used over and over again. using the code '#banana' translates to the code shown to Anons as '!5RRtZawAKg'"
+msgstr "Cuando se agrega el símbolo (#) para el final de su nombre seguido de una palabra, como una contraseña que sólo usted sabe, descompone la palabra en un código. De esa manera es indetectable y se puede utilizar una y otra vez. utilizando el código '# banana' se traduce en el código que se muestra como '! 5RRtZawAKg'" 
+
+#: templates/faq.html
+msgid "If you are a moderator you can write to the poster field !name in this way in the publication will be displayed !Mod"
+msgstr "Si eres moderador puedes escribir en el campo  anunciante !name de esta manera en la publicacion se mostrara !Mod" 
+
+#: templates/faq.html
+msgid "¿WHAT IS SOCIALCHAN?"
+msgstr "¿QUE ES SOCIALCHAN?" 
+
+#: templates/faq.html
+msgid "GLOBAL RULES"
+msgstr "REGLAS GLOBALES" 
+
+#: templates/faq.html
+msgid "TRICKS POSTING"
+msgstr "TRUCOS DE POSTEO" 
+
+#: templates/faq.html
+msgid "I WANT TO REMOVE A PICTURE OR A COMMENT"
+msgstr "QUIERO REMOVER UNA IMAGEN O UN COMENTARIO" 
+
+#: templates/faq.html
+msgid "PRIVACY POLICY"
+msgstr "POLITICA DE PRIVACIDAD" 
+
+#: templates/faq.html
+msgid "LEGAL NOTICE"
+msgstr "AVISO LEGAL" 
+
+#: templates/faq.html
+msgid "CONTACT"
+msgstr "CONTACTO" 
+
+#: templates/faq.html
+msgid "text bold"
+msgstr "texto en negrilla" 
+
+#: templates/faq.html
+msgid "italic text"
+msgstr "texto en cursiva" 
+
+#: templates/faq.html
+msgid "strikethrough text"
+msgstr "texto tachado" 
+
+#: templates/faq.html
+msgid "underline"
+msgstr "subrayar" 
+
+#: templates/faq.html
+msgid "spoiler"
+msgstr "spoilear" 
+
+#: templates/faq.html
+msgid "leave row"
+msgstr "dejar fila" 
+
+#: templates/faq.html
+msgid "Content"
+msgstr "Contenido" 
+
+#: templates/faq.html
+msgid "texthere"
+msgstr "textoaqui" 
+
+#: templates/faq.html
+msgid "without quotation marks, to leave 2 spaces"
+msgstr "sin comillas, dejar 2 espacios" 
+
+#: templates/index.html:129
+msgid "Random image"
+msgstr "Imagen aleatoria"
+
+#: templates/navigation.html:5 templates/sidebar.html:19
+#: templates/pda/index.html:37 templates/pda/index.html.py:40
+#: templates/pda/index.html:173
+msgid "FAQ"
+msgstr "FAQ"
+
+#: templates/edit_profile.html
+msgid "Fill out the information in your profile"
+msgstr "Completa la informacion de tu perfil"
+
+#: templates/edit_profile.html
+msgid "Enter or change the current photo"
+msgstr "Ingrese o cambia la foto actual"
+
+#: templates/edit_profile.html
+msgid "Date of birth"
+msgstr "Fecha de nacimiento"
+
+#: templates/edit_profile.html
+msgid "Country"
+msgstr "Pais"
+
+#: templates/edit_profile.html
+msgid "Phrase which describes you"
+msgstr "Frase que te describa"
+
+#: templates/edit_profile.html
+msgid "Eg. I love go out and party or I want to make many friends"
+msgstr "Por ej. 'me encanta salir de fiesta' o 'quiero hacer muchos amigos"
+
+#: templates/edit_profile.html
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/index.html
+msgid "Signin"
+msgstr "Ingresar"
+
+#: templates/index.html
+msgid "Terms and Conditions"
+msgstr "Terminos y condiciones"
+
+#: templates/index.html
+msgid "Policies"
+msgstr "Politicas"
+
+#: templates/index.html
+msgid "About us"
+msgstr "Sobre nosotros"
+
+#: templates/index.html
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/index.html
+msgid "Philosophy"
+msgstr "Filosofia"
+
+#: templates/index.html
+msgid "Signup"
+msgstr "Registrate"
+
+#: templates/register_login.html
+msgid "¿Have you have an account and just want to login?"
+msgstr "¿Tu ya tienes una cuenta y solo quieres ingresar?"
+
+#: templates/register_login.html
+msgid "Username"
+msgstr "Nombre de usuario"
+
+
+#: templates/register_login.html
+msgid "CREATE A NEW ACCOUNT"
+msgstr "CREAR UNA NUEVA CUENTA"
+
+#: templates/register_login.html
+msgid "You have to login or register to do that"
+msgstr "Tienes que iniciar sesión o registrarte para hacer eso"
+
+#: templates/register_login.html
+msgid "Email account recovery"
+msgstr "Email de recuperación de cuenta"
+
+#: templates/register_login.html
+msgid "Confirm password"
+msgstr "Confirmar contraseña"
+
+
+#: templates/register_login.html
+msgid "Create account"
+msgstr "Crear cuenta"
+
+#: templates/register_login.html
+msgid "Our philosophy"
+msgstr "Nuestra filosofia"
+
+#: templates/register_login.html
+msgid "optional"
+msgstr "opcional"
+
+#: templates/register_login.html
+msgid "We never disclose information for any reason only if required by law"
+msgstr "Nosotros nunca revelamos información por ninguna razon, solo si es requerido por la ley"
+
+#: templates/register_login.html
+msgid "In this site all types of content than not be pornography or gore is allowed"
+msgstr "En este sitio se permiten todos los tipos de contenido con excepcion de pornografía o gore"
+
+#: templates/register_login.html
+msgid "This site monitors the publications and if found an infringement will be penalized by removing or not allowing the publication again and entrance to the site to the offending user"
+msgstr "Este sitio vigila las publicacion y si se encuentra una infracción sera penalizada eliminando la publicación o no permitiendo de nuevo la entrada al sitio del usuario infractor."
+
+#: templates/user_account.html
+msgid "I understand that deleted accounts are not recoverable"
+msgstr "Entiendo que las cuentas eliminadas no se pueden recuperar"
+
+#: templates/user_account.html
+msgid "Update your email or password"
+msgstr "Actualiza tu email o contraseña"
+
+#: templates/user_account.html
+msgid "Account"
+msgstr "Cuenta"
+
+#: templates/user_account.html
+msgid "Current password"
+msgstr "Contraseña actual"
+
+#: templates/user_account.html
+msgid "If you had a problem, consider contacting us before deleting your account."
+msgstr "Si tienes algun problema considera contactarnos antes de eliminar tu cuenta"
+
+#: templates/user_menu.html
+msgid "account"
+msgstr "cuenta"
+
+#: templates/user_menu.html
+msgid "Upload your pic"
+msgstr "Sube tu imagen"
+
+#: templates/user_menu.html
+msgid "has not yet uploaded a picture of himself"
+msgstr "no ha subido aun ninguna foto"
+
+#: templates/user_menu.html
+msgid "Delete this photo"
+msgstr "Eliminar esta foto"
+
+#: templates/user_menu.html
+msgid "Hello everyone"
+msgstr "Hola a todos"
+
+#: templates/user_menu.html
+msgid "I am from"
+msgstr "Yo soy de"
+
+#: templates/user_menu.html
+msgid "I am"
+msgstr "tengo"
+
+#: templates/user_menu.html
+msgid "years old"
+msgstr "años"
+
+#: templates/user_menu.html
+msgid "Messages"
+msgstr "Mensajes"
+
+#: templates/user_menu.html
+msgid "Contacts"
+msgstr "Contactos"
+
+#: templates/user_menu.html
+msgid "Edit profile"
+msgstr "Editar perfil"
+
+#: templates/user_menu.html
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+#: templates/user_menu.html
+msgid "Send"
+msgstr "Enviar"
+
+#: templates/user_menu.html
+msgid "Add to blacklist"
+msgstr "Añadir a la lista negra"
+
+#: templates/user_contacts.html
+msgid "blacklist"
+msgstr "lista negra"
+
+#: templates/user_contacts.html
+msgid "These users can not contact you through messages."
+msgstr "Estos usuarios no podrán contactar contigo por mensajes."
+
+#: templates/user_account.html
+msgid "Add contact"
+msgstr "Añadir como contacto"
+
+#: templates/user_account.html
+msgid "The user is already in blacklist"
+msgstr "El usuario ya esta en lista negra"
+
+#: templates/user_account.html
+msgid "Already has been sent a contact request to this person"
+msgstr "Ya se ha enviado una solicitud de contacto a esta persona"
+
+#: templates/user_account.html
+msgid "remove contact"
+msgstr "eliminar contacto"
+
+#: templates/user_account.html
+msgid "Unread"
+msgstr "Sin leer"
+
+#: templates/user_account.html
+msgid "activity"
+msgstr "actividad"
+
+#: templates/friend_list.html
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/user_account.html
+msgid "password/e-mail"
+msgstr "contraseña/e-mail"
+
+#: templates/contacts_invitation.html
+msgid "These users want to be your contacts"
+msgstr "Estos usuarios quieren ser tus contactos"
+
+#: templates/contacts_invitation.html
+msgid "Contact invitation"
+msgstr "Invitacion de contactos"
+
+#: media/js/user_activity.html
+msgid "Groups created."
+msgstr "Grupos  creados."
+
+#: templates/user_activity.html
+msgid "posts"
+msgstr "publicaciones"
+
+#: templates/user_activity.html
+msgid "anonymous posts"
+msgstr "publicaciones anonimas"
+
+#: templates/user_activity.html
+msgid "This list is private only you can see it."
+msgstr "Esta lista es privada, solo la puedes ver tu."
+
+#: templates/user_activity.html
+msgid "Activity"
+msgstr "Actividad"
+
+#:templates/registration/password_reset_done.html
+msgid "We've e-mailed you instructions for setting your password to the e-mail address you submitted. You should be receiving it shortly."
+msgstr "Te hemos enviado por correo electrónico las instrucciones para configurar la contraseña a la dirección de correo electrónico que ha escrito. Usted la debe recibir en breve."
+
+#:templates/registration/password_reset_form.html
+msgid "Forgotten your password? Enter your e-mail address below, and we'll e-mail instructions for setting a new one."
+msgstr "¿Olvidó su contraseña? Introduzca su dirección de correo electrónico a continuación, y enviaremos las instrucciones al correo electrónico para establecer una nueva."
+
+#:templates/registration/password_reset_email.html
+msgid "You're receiving this e-mail because you requested a password reset"
+msgstr "Tu estas recibiendo este correo porque tu pediste reiniciar tu contraseña"
+
+#:templates/registration/password_reset_email.html
+msgid "for your user account at"
+msgstr "para tu cuenta de ususario en"
+
+#:templates/registration/registration_complete.html
+msgid "Check your email"
+msgstr "Revisa tu correo"
+
+#:templates/registration/registration_complete.html
+msgid "An activation link has been sent to the email address you supplied, along with instructions for activating your account"
+msgstr "Un link de activacion ha sido enviado a la direccion de correo que tu escribiste, siga las instrucciones para activar tu cuenta"
+
+#:templates/registration/activation_email_subject.txt
+msgid "Activate your socialCHAN.com account - you have"
+msgstr "Activa tu cuenta en socialCHAN  - tu tienes"
+
+#:templates/registration/activation_email_subject.txt
+msgid "days"
+msgstr "dias"
+
+#:templates/registration/activation_email.txt
+msgid "Someone, hopefully you, signed up for a new account at socialCHAN.com using this email address. If it was you, and you'd like to confirm your email, click the link below or copy and paste it into your web browser's address bar"
+msgstr "Alguien, esperamos que seas tu, se ha registrado para una nueva cuenta en socialCHAN.com usando esta direccion de correo. Si fuiste tu, y quieres confirmar tu correo, haz click en el link de abajo o copia y pega en la barra de tu navegar web la direccion"
+
+#:templates/registration/activation_email.txt
+msgid "If you didn't request this, you don't need to do anything; you won't receive any more email from us, and the account will expire automatically in"
+msgstr "Si tu no pediste esto, tu no necesitaras hacer nada; tu no recibiras mas correos de nosotros, y la cuenta expirara automaticamente en"
+
+#:templates/registration/activation_complete.txt
+msgid "Congratulations"
+msgstr "Felicitaciones"
+
+#:templates/registration/activation_complete.txt
+msgid "Your registration is now complete. Go to the site and start having fun"
+msgstr "Tu registro esta ahora completo. Ya puedes empezar a divertirte."
+
+#:templates/registration/activate.html
+msgid "Sorry, it didn't work. Either your activation link was incorrect, or the activation key for your account has expired"
+msgstr "Lo sentimos, no ha funcionado. Puede ser que su enlace de activación era incorrecta, o la clave de activación para su cuenta ha expirado"
+
+#:templates/registration/activate.html
+msgid "Account activated"
+msgstr "Cuenta activa"
+
+#:templates/registration/activate.html
+msgid "Thanks for signing up! Now you can log in"
+msgstr "Gracias por registrate! Ahora puedes acceder al sitio"
+
+#:templates/registration/password_reset_subject.txt
+msgid "Activate your socialCHAN.com account"
+msgstr "Activa tu cuenta en socialCHAN.com"
+
+#:templates/registration/activation_complete.txt
+msgid "You have not activated your account"
+msgstr "Tu no tienes activada tu cuenta"

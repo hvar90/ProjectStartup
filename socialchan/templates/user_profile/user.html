@@ -1,0 +1,127 @@
+{% extends "index_base.html" %}
+{% load  age i18n call_method %}
+
+{% block header %}
+<header class="headerv2">
+	<div class="centercontainer">
+		<h1>
+			<a href="/">SCHAN</a>
+		</h1>
+		<nav class="wellcome">
+			<ul>
+				{% if not user.is_authenticated %}
+				 <li><a class="" href="javascript:history.back()">{% trans "Back" %}</a></li>	
+				 <li><a class="" href="/">Home</a></li>	
+				 <li><a class="" href="/#sig_in">{% trans "Signup" %}</a></li>
+				 <li><a class="" href="/#log_in">{% trans "Signin" %}</a></li>						
+				{% else %}				 
+				 <li><a class="" href="javascript:history.back()">{% trans "Back" %}</a></li>				 
+				 <li><a class="" href="/user/edit">{% trans "Edit" %}</a></li>
+				 <li><a class="" href="/user/friends">{% trans "Friends" %}</a></li>
+				 {% if user.profile.owner_sections.all %}
+				   <li><a class="" href="/user/groups">{% trans "Groups" %}</a></li>	
+				 {% endif %}		  			 	
+				{% endif %}							
+			</ul>
+		</nav>
+	</div>
+</header>
+{% endblock %}	
+{% block content %}
+	<div class="centercontainer userbox mt20">
+		<div class="div-left">		
+			{% if useracount.profile.profile_picture %}				
+			   <img src="{{ MEDIA_URL }}{{ useracount.profile.profile_picture}}" alt="user detail" class="img-circle" /> 				   
+		    {% else %}
+			   	 <img src="{{ STATIC_URL }}image/user.png" alt="user detail" class="img-circle" />
+		    {% endif %}	
+		</div>
+		<div class="panel-user-8 ">
+			{% if user.is_authenticated %}
+				{% ifnotequal useracount.id user.id %}			
+				  <div id="img-user"  class="img-user div-right">				
+					{% if user.profile|args:useracount.profile.id|call:"is_invited" %}				
+					   <button class="follow-user">
+						<i class="fa fa-check pr5"></i>{% trans "Sent invitation" %}
+					   </button>			   
+					{% elif user.profile|args:useracount.profile|call:"is_friend" %}
+					   <button id="remove-contact" id_profile="{{useracount.profile.id}}" class="follow-user">
+						<i class="fa fa-times pr5"></i>{% trans "Delete friend" %}
+					   </button>
+					{% else %}	
+					  <button id="send_invitation" id_profile="{{useracount.profile.id}}" class="follow-user">
+						<i class="fa fa-plus pr5"></i>{% trans "Add friend" %}
+					  </button>
+					{% endif %}	
+				  </div>   
+				{% endifnotequal %}	
+			 {% endif %}				
+			<div class="text-left">
+				<h2 class="title"><a href="#">{{useracount.username|title}}</a></h2>
+				<div class="text-description">
+					<span>{% trans "Hello everyone" %} </span>
+					<br/>{{ useracount.profile.phrase}}			
+						{% if useracount.profile.country %}
+						   <br/>{% trans "I am from" %}  {{ useracount.profile.country}},
+						{% endif %}	
+						{% if useracount.profile.birthdate %}
+						  {% trans "I am" %}  {{ useracount.profile.birthdate|age}}  {% trans "years old" %}  
+						{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<section  class="well centercontainer " username>		
+		{% if useracount.id == user.id %}
+			<div id="notifications" class="headline">
+			 <i class="fa fa-bell"></i>
+			 <h3>{% trans "Notifications" %}.</h3>
+			</div>
+			<!-- Notificaciones -->
+			{% if user.profile.contact_invitation_user.all or user.profile.groups_with_new_post or user.profile.news_accepted_invitation %}
+				{% for invitation in user.profile.contact_invitation_user.all %}		
+				 <div id="friendid{{ invitation.id }}" class="content mt20 ">
+					<div class="text"><a href="/user/{{ invitation.user.username }}">{{ invitation.user.username }}
+					 </a>&nbsp;{% trans "do you accept to be his friend?" %}&nbsp;&nbsp;
+					 <i class="fa fa-check btnAccept cursor colorgreen" iduser={{ invitation.id }}></i>
+					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					 <i class="fa fa-times btnDeny cursor colorred" iduser={{ invitation.id }}></i>
+					</div>
+				 </div>		
+				{% endfor %}
+				{% for group in user.profile.groups_with_new_post  %}	
+				  {% if group.section.type_section != 6 %}		
+					 <div class="text mt20">{% trans "new publication on the group" %}
+					  <a href="/{{ group.section.slug }}/">
+						 {{ group.section.name }}
+					  </a>
+					 </div>
+				  {% else %}	
+					 <div class="text mt20">{{ group.section|args:user.profile|call:"get_friend_chat"}} {% trans "has sent you a message" %}
+					  <a href="/{{ group.section.slug }}/">
+						{% trans "view message" %}
+					  </a>
+					 </div>
+				  {% endif %}
+				{% endfor %}
+				{% for friend in user.profile.news_accepted_invitation  %}				  
+				   <div class="text mt20">
+				    <a href="/user/{{ friend.person2.user.username }}">
+					 {{ friend.person2.user.username }}
+				    </a>
+				    {% trans "is now your friend" %}
+				   </div>				 
+				{% endfor %}
+			{% else %}	
+			   <div class="text mt20">{% trans "You do not have notifications at this moment" %}.</div>
+			{% endif %}
+		{% else %}
+			<div class="headline">			
+			 <h4>{% trans "Do you want to meet this user? invite his so that he  be your friend and can speak on private chat" %}.</h3>
+			</div>
+		{% endif %}
+	</section>
+{% endblock %}
+
+
+

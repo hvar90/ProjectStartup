@@ -1,0 +1,170 @@
+/* Small Device*/
+
+/* Tablet */
+@media (max-width: 53.3em) {
+	.colm1, .colm2, .colm3{
+		margin-left: 10px;
+	}
+	.colm{
+		display: block;
+		width: 95%;
+	}
+	.post {
+		margin-left: 70px;
+	}
+	.titlegroups{
+		margin: 0px 0px 20px 0px;
+	}
+	.groupmax{
+		margin: 10px 0px 10px 10px;
+		width: 95%;
+	}
+	.youtube-player 
+	{
+		width: 380px;
+	}
+	.panel-user-8{
+		width: 55%;
+	}
+	.panel-post-4{
+		width: 20%;
+		padding: 0px 0px 0px 15px;
+	}
+	.panel-post-8{
+		width: 75%;
+	}
+	.body-post{
+		float: none;
+		max-width: none;
+	}
+	.post-create .post-center .div-left .boom-active{
+		padding: 5px;
+	}	
+	.panel-post-6{
+		width: 100%;
+	}
+	.no-login{	
+	 background-attachment: scroll;	
+    }
+	.hidden-sm{
+		display: none;
+	}
+	.panel-post-5{
+		width: 100%;
+		float: none;
+	}
+	.share-post {
+		display: none;
+	}
+	
+}
+/* Smartphone */
+
+@media(max-width: 30em){
+
+	header h1{	
+		line-height: 30px;	
+	}
+	
+	.img-circle{
+		width: 140px;
+		height: 140px;		
+    }
+   	
+	.wellcome{	
+        padding: 0 1px 0 1px;
+        font-size: 0.8rem;
+	}
+
+	.leftcont{
+		width: 100%;		
+		text-align: center;
+	}
+	.groupmax{
+		margin: 10px 0px 10px 7px;
+		width: 95%;
+	}
+	.imgplaystore{
+		margin: 10px 0px 3px 7px;
+		width: 94%;
+	}
+	.wellcome{
+		width: 100%;
+		float: right;
+	}
+	.socialfooter, .copy{
+		width: 100%;
+		text-align: center;
+		float: none;
+		padding-top: 10px;
+	}
+	.boxdata{
+		width: 100%;
+	}
+	.post{
+	    margin-left:30px
+	}
+	.form{
+		padding: 1em 1em 7em;
+	}
+	.data{
+		width: auto;
+	}
+	.body-post img:not(.emoticon):not(.youtube-player):not(.mediaPlayIcon){
+		width: 100%;
+	}
+	.panel-post-4{
+		width: 100%;
+		float: none;
+		padding-bottom: 15px;
+	}
+	.panel-post-8{
+		width: 90%;
+		padding: 0px 0px 10px 10px;
+		float: none;
+	}
+	.footer-post{
+		float: none;
+	}
+	.uploader-files{
+		width: 50%;
+		float: left;
+		display: inline-block;
+		overflow: hidden;
+	}
+	.uploader-files span{
+		padding-left: 15px;
+		
+	}
+	.cont-avatar{
+		max-width: none;
+	}
+	.follow-user{		
+		margin: 0px;		
+	}	
+	.userbox{
+	  min-height: 0px; 	
+    }
+	
+	.img-user{		
+		float: none;		
+	}
+	.no-login{	
+	 background-attachment: scroll;	
+    }
+    .titlegroups h3{
+		font-size: 1rem;
+	}
+	.share-post {
+		display: none;
+	}
+	
+	.groups
+	{
+		margin-bottom: 5px;
+	}
+}
+
+/* Desktop */
+
+@media(max-width: ){}

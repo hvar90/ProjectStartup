@@ -1,0 +1,42 @@
+{% extends "index_base.html" %}
+{% load  i18n  call_method %}
+
+{% block header %}
+<header class="headerv2">
+	<div class="centercontainer">
+		<h1>
+			<a href="/">SCHAN</a>
+		</h1>
+		<nav class="wellcome">
+			<ul>			
+			  <li><a class="" href="javascript:history.back()">{% trans "Back" %}</a></li>	
+			  <li><a class="" href="/">Home</a></li>									
+			</ul>
+		</nav>
+	</div>
+</header>
+{% endblock %}	
+{% block content %}
+<section class="centercontainer mt20">
+	<div class="headline center-text">
+		<h3>{% trans "Your groups" %}</h3>
+	</div>
+	{% if groups %}
+	   <ul id="itemList" class="icon-list">
+		 {% for group in groups %}			 
+		  <li class="pb1" >			 
+			 <a href="/editgroup/{{ group.id }}"> 			  
+				<img src="{{ MEDIA_URL }}{{ group.image }}" height="100" width="100" class="list-icon"/> 				
+				<p class="line1">{{ group.name }}</p> 
+				<p class="line2">{% trans "Click here to edit the group" %}</p> 				
+			 </a>			
+		  </li>		
+		 {% endfor %}		 
+	   </ul>							
+	{% else %}				 
+	   <div class="text mt20">{% trans "You do not have groups by the moment" %}</div>						 	
+	{% endif %}		
+</section>
+{% endblock %}
+
+

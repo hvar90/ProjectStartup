@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load i18n dmark call_method %}
+{% block role %}threads{% endblock %}
+
+{% block header %}
+	<header>
+		<h1>
+		  <a href="/">SCHAN</a>
+		</h1>
+		<nav class="wellcome">
+			<ul>
+				{% if not user.is_authenticated %}
+				 <li><a class="" href="../">Home</a></li>
+				 <li><a class="" href="../#sig_in">{% trans "Signup" %}</a></li>
+				 <li><a class="" href="../#log_in">{% trans "Signin" %}</a></li>					
+				{% else %}	
+				{% if user.profile.contact_invitation_user.all or user.profile.groups_with_new_post or user.profile.news_accepted_invitation %}
+				 <i class="fa fa-bell"></i>	
+				{% endif %}							 
+				 <li><a class="" href="/user/{{ user.username }}">{{ user.username|title }}</a></li>	
+				 <li><a class="" href="../">Home</a></li>				
+				 <li><a class="" href="/searchmembers">{% trans "Search" %}</a></li>
+				 <li><a class="" id='logout' href="">{% trans "Logout" %}</a></li>				 	
+				{% endif %}							
+			</ul>
+		</nav>
+	</header>
+{% endblock %}	
+{% block content %}
+      {% if section.type_section != 6 %}
+		  <div class="parallax-group">
+			  <img  src="{{ MEDIA_URL }}{{ section.image }}"  alt="">			
+		  </div>
+	  {% endif %}	  
+	  <div class="centercontainer center-text">
+		 {% if section.type_section != 6 %}	
+			<h1 class="mt20">{{ section.name }}</h1>
+			<h3  class="mb10"><center>{% trans "Group created by:" %}&nbsp;<a href="/user/{{ ownerSection }}">{{ ownerSection }}</a></center></h3>
+		 {% else %}
+			<h1>Chat - {{ section|args:user.profile|call:"get_friend_chat"}} </h1>
+		 {% endif %}		 
+		 {% if section.type_section != 6 %}	
+			 <div id="btns-follow">		
+				 {% if user.is_authenticated %}				
+				   {% if user.profile|args:section.id|call:"is_subscribed" %}
+					 <button class="follow-user  mt10" id="btn_unfollow_group" idSection={{ section.id  }}>
+					   <i class="fa fa-minus-square pr5"></i>{% trans "Unfollow" %}
+					 </button>					
+				   {% else %}	 
+					 <button class="follow-user  mt10" id="btn_follow_group" idSection={{ section.id  }} >
+					   <i class="fa fa-plus-square pr5"></i>{% trans "Follow" %}
+					 </button>										 								 
+				   {% endif %}
+				{% endif %}		
+			 </div>	
+		 {% endif %}	 
+	  </div>
+	   <div class="post-create ">
+		<div class="post-center">
+			<form class="row newpost" id="newpost" method="post"  data-thread-id="">		
+				<input name="section" id="section" value="{{ section.slug }}" type="hidden">
+				<textarea name="message" id="message"></textarea>
+			    {% include "menu_emoticons.html" %}
+				<div class="div-left">
+					<span>{% trans "Picture" %}</span>
+					<input type="file"   class="upload-image boom-active" value="upload" name="files" id="files" ></input>
+				</div>	
+				<div class="div-right pt20">	
+				   
+				    {% if section.type_section != 6 %}			    
+						 <input type="submit" class="boom-active" value="{% trans "Post" %}">
+					{% else %}
+					     <input type="submit" class="boom-active" value="{% trans "Send" %}">
+					{% endif %}		
+				    {% if user.is_authenticated and section.type_section != 6 %}			    
+						<p class="check">
+							<input type="checkbox" id="remember-me" name="is_anonymous" id="is_anonymous" />
+							<label for="remember-me" class=" cd-style">{% trans "Anonymous" %}</label>
+						</p>
+					{% endif %}					
+				</div>				
+				<div class="pt20 uploader-files">
+					<span id="upload-path"></span>
+				</div>					
+			</form>
+		</div>
+	   </div>
+      <section id="threads" >	     
+       {% autoescape off %}
+		  {% for thread in threads %}			
+			 {{ thread.html }}
+		  {% endfor %}
+	   {% endautoescape %} 
+	   </section>	
+{% endblock %}
+{% block footer %}
+   {% if section.type_section != 6 %}
+		<footer>
+			<nav class="itemsfooter">
+				<ul>
+					<li><a href="#">{% trans "Terms and Conditions" %}</a></li>
+					<li><a href="#">{% trans "Policies" %}</a></li>
+					<li><a href="#">{% trans "About us" %}</a></li>
+					<li><a href="#">{% trans "Philosophy" %}</a></li>
+				</ul>
+			</nav>
+			<div class="socialfooter">
+				<a href="#">
+					<div class="face net">
+						<span class="fa fa-facebook fa-2x noicon"></span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="twi net">
+						<span class="fa fa-twitter fa-2x noicon"></a></span>
+					</div>
+				</a>
+				<a href="#">
+					<div class="goplus net">
+						<span class="fa fa-google-plus fa-2x noicon"></span>
+					</div>
+				</a>
+			</div>
+			<div class="copy">
+				<p>© SocialCHAN inc, 2015</p>
+			</div>
+		</footer>
+  	{% endif %}	
+{% endblock %}	
+

@@ -1,0 +1,335 @@
+from django.utils.translation		 import ugettext as _
+from rest_framework					 import status
+from rest_framework.response		 import Response
+from rest_framework.views			 import APIView
+from django.contrib.auth			 import authenticate, login as auth_login , logout as auth_logout
+from rest_framework.permissions		 import IsAuthenticated
+from board.tools					 import make_post_descriptions
+from registration.models			 import RegistrationProfile
+from django.dispatch.dispatcher		 import receiver
+from django.db.models.signals		 import pre_delete
+from django.contrib.sites.models	 import Site
+from board.models                    import Post,Section
+from user_profile.models			 import *
+from resources						 import *
+from .permissions					 import *
+from appSocialchan.src.socialchanCore.core.common	import payload,sendAndRecv
+import xmlrpclib
+
+messagesHandler = xmlrpclib.ServerProxy('http://localhost:8081')
+queueName="usersHandlerQueue"
+
+
+class ValidationError(Exception):
+	"""
+		El error es lanzado cuando el contenido creado por usuario es 
+		invalidoThe error raised when content created by user is invalid.
+		NOTA: django.forms.ValidationError no se puede usar aqui por que
+		nosotros necesitamos serializar la excepcion.
+	"""
+	pass
+
+#def modify_profile(request,pk): 
+	
+	#userProfile=UserProfile.objects.get(id=pk)		
+	#form =  UserProfileForm( request.DATA,request.FILES, instance=userProfile)
+
+	#if not form.is_valid():
+		#raise ValidationError(dict(form.errors))	
+	#else:   		
+		#if request.FILES:	
+			#delete_photoUserProfile(request,pk)		
+		#form.save()	
+		
+	#return
+	
+#def delete_photoUserProfile(request,pk):   
+	
+	#if UserProfile.objects.get(id=pk).profile_picture : 
+		#UserProfile.objects.get(id=pk).profile_picture.delete()	
+	#return  
+	
+	
+def create_user(request):
+	
+	form = UserForm(request.POST)
+	username = form['username'].value() 
+	password = form['password'].value()  
+	repassword = form['repassword'].value() 
+	email =  form['email'].value()   
+	if not password == repassword:
+		raise ValidationError(
+			_("The verification of the password failure, type the password again")
+		)   
+	elif not form.is_valid():
+		raise ValidationError(dict(form.errors))	
+	else:
+			 
+		 if Site._meta.installed:
+			site = Site.objects.get_current()
+		 else:
+			site = RequestSite(request)
+		 RegistrationProfile.objects.create_inactive_user(username, email, password, site) # esto va en los servicios???		 
+		 userAut = authenticate(username=username, password=password)   
+		 auth_login(request, userAut)   
+	return
+	
+def login_user(request):	
+	
+	username = request.POST.get("username")
+	password = request.POST.get("password") 	
+	user = authenticate(username=username, password=password)	   
+	if user:
+		auth_login(request, user)   
+	else:
+		raise ValidationError(
+			_("Invalid username or password")
+		)			
+	return
+	
+def change_pass_or_email(request,pk):  
+	
+	form = ChangePassForm(request.POST)
+	if request.user.is_active:  
+		if request.user.check_password(form['password_current'].value()): #preguntar se manda a servicio esto??
+			if form['new_password'].value() and form['confirm_password'].value():
+				if (form['new_password'].value() == form['confirm_password'].value()) :					
+					request.user.set_password(form['new_password'].value())
+					request.user.save()		 					 
+				else:
+					raise ValidationError(
+					_("Confirmation for the new password does not match")
+				)	   
+			if form['email'].value(): User.objects.filter(pk=pk).update(email=form['email'].value())				
+		else:
+			raise ValidationError(
+				_("Invalid password")
+			)
+	else:
+		raise ValidationError(
+			_("You have not activated your account")
+		)
+		
+def del_account(request,pk):
+	
+	if request.user.username == request.DATA.get("username") and request.user.check_password(request.DATA.get("password")): #dudoso
+		User.objects.get(pk=pk).delete() 	
+		auth_logout(request)		
+	else:
+		raise ValidationError(
+				_("Invalid username or password")
+			)   
+
+@receiver(pre_delete, sender=UserProfile)
+def user_delete(sender, instance, *args, **kwargs):
+	
+	for p in Post.objects.filter(user_profile=instance.id):
+		p.remove()	
+	Section.objects.filter(owner=instance.id).delete()
+
+	
+def logout_user(request):	   
+	auth_logout(request)
+	
+#def remove_invitation(request,pk):	
+	#userFrom = UserProfile.objects.get(user_id=request.DATA.get("iduser"))
+	#userTo = UserProfile.objects.get(id=pk)
+	#userFrom.contact_invitation.remove(userTo)
+
+class UserCreateView(APIView):
+	
+	def post(self, request, *args, **kwargs):
+		"""Revisa errores."""		
+		try:
+			create_user(request)
+		except ValidationError as e:
+			return Response({"detail": e.message}, status=status.HTTP_400_BAD_REQUEST)		 
+	   
+		return Response(status.HTTP_201_CREATED)
+   
+#class UpdateUserProfileView(APIView):
+	#permission_classes = (IsAuthenticated,)
+	#def put(self, request,pk *args, **kwargs):
+		#"""Revisa errores."""		   
+		#try:			
+			#modify_profile(request)			   
+		#except ValidationError as e:
+			#return Response( {"detail": e.message}, status.HTTP_400_BAD_REQUEST)		   
+	   
+		#return Response()		
+
+		
+#class RemovePhotoUserProfileView(APIView):
+	#permission_classes = (IsAuthenticated,)
+	#def put(self, request, *args, **kwargs):
+		#"""Revisa errores.""" 
+		#try:
+			#modify_profile(request)
+		#except ValidationError as e:
+			#return Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST)		
+	   
+		#return Response()
+		
+class ProfileListView(APIView):
+	permission_classes = (IsOwnerPk,)
+	def get(self, request,pk, *args, **kwargs):
+		"""Revisa errores."""
+		try:		   
+			self.check_object_permissions(request,pk)		
+				
+		except ValidationError as e:
+			return Response({"detail": e.message},status.HTTP_400_BAD_REQUEST, )				   
+	   
+		if 'getcontactinvitation' in request.GET:			
+				
+				dictionary = dict(pk=pk)
+				payloadObj= payload("command", "getContactInvitation" , dictionary)
+				payloadEncode= messagesHandler.encode(payloadObj)
+				responseEncode = sendAndRecv(messagesHandler,queueName,payloadEncode)	 
+				payloadResponse= messagesHandler.unpackPayload(responseEncode) 
+			
+				
+				if payloadResponse["type"] == "error":		
+					return Response({"detail":payloadResponse["error"]},
+								status.HTTP_400_BAD_REQUEST )			
+				else: return Response(payloadResponse["response"])
+		
+	
+	
+class ProfileDetailView(APIView):
+	
+	permission_classes = (IsAuthenticated,IsOwnerPk) 
+	
+	def get(self, request,pk, *args, **kwargs):
+		"""Revisa errores."""
+		try:			
+		   self.check_object_permissions(request,pk)	
+		   serializer = ProfileResource(request.user.profile)	#preguntar es necesario servicio aqui?				   
+		except ValidationError as e:
+			return Response({"detail": e.message},status.HTTP_400_BAD_REQUEST, )				   
+	   
+		return Response(serializer.data)   
+	
+	def put(self, request,pk, *args, **kwargs):		
+
+	
+		if request.FILES:	
+			dictionary = dict(pk=pk,requestGet = request.GET.dict(),
+							  requestPut = request.DATA.dict(),
+							  readFile = xmlrpclib.Binary(request.FILES['profile_picture'].read()) )	
+		else:		
+			dictionary = dict(pk=pk,requestGet = request.GET.dict(),
+							  requestPut = request.DATA.dict(),
+						      )	
+		payloadObj= payload("command", "updateProfile" , dictionary)
+		payloadEncode= messagesHandler.encode(payloadObj)
+		responseEncode = sendAndRecv(messagesHandler,queueName,payloadEncode,1.9)	 
+		payloadResponse= messagesHandler.unpackPayload(responseEncode) 
+		
+		if payloadResponse["type"] == "error":		
+			return Response({"detail":payloadResponse["error"]},
+						status.HTTP_400_BAD_REQUEST )			
+		else: return Response(status.HTTP_201_CREATED)
+		
+		
+class ProfilePostView(APIView):
+	permission_classes = (IsAuthenticated,IsOwnerUsername)  
+	def get(self, request,username, *args, **kwargs):		
+		
+		try:			   
+		   if 'getpostanonymous' in request.GET:	
+			   self.check_object_permissions(request,username)			   
+		except ValidationError as e:
+			return Response( {"detail": e.message}, status.HTTP_400_BAD_REQUEST)	   
+
+		
+		
+		dictionary = dict(username=username,
+						  requestGet = request.GET.dict())
+						  
+						      	
+		payloadObj= payload("command", "getPosts" , dictionary)
+		payloadEncode= messagesHandler.encode(payloadObj)
+		responseEncode = sendAndRecv(messagesHandler,queueName,payloadEncode,4.9)	 
+		payloadResponse= messagesHandler.unpackPayload(responseEncode) 
+		
+		if payloadResponse["type"] == "error":		
+			return Response({"detail":payloadResponse["error"]},
+						status.HTTP_400_BAD_REQUEST )			
+		else: return Response(payloadResponse["response"])		
+	
+		   
+class UserLogoutView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def post(self, request, *args, **kwargs):
+		"""Revisa errores."""
+		try:
+			 auth_logout(request)
+		except ValidationError as e:
+			return Response( {"detail": e.message}, status.HTTP_400_BAD_REQUEST)		   
+	   
+		return Response(status.HTTP_201_CREATED)	
+		
+class UserLoginView(APIView):
+	
+	def post(self, request, *args, **kwargs):
+		"""Revisa errores."""
+		try:
+			 login_user(request)
+		except ValidationError as e:
+			return Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST,)		   
+	   
+		return Response(status.HTTP_201_CREATED)
+		
+class UserDetailView(APIView):
+	permission_classes = (IsOwnerPk,)
+	def post(self, request,pk, *args, **kwargs):
+		"""Revisa errores."""	
+		
+		
+		try:				
+			self.check_object_permissions(request,pk)	
+		except ValidationError as e:
+			return Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST,)		   
+	   
+	
+		dictionary = dict(pk=pk,
+						  requestPost = request.POST.dict())
+						  
+						      	
+		payloadObj= payload("command", "changePassOrEmail",dictionary)
+		payloadEncode= messagesHandler.encode(payloadObj)
+		responseEncode = sendAndRecv(messagesHandler,queueName,payloadEncode,1.7)	 
+		payloadResponse= messagesHandler.unpackPayload(responseEncode) 
+		
+		if payloadResponse["type"] == "error":		
+			return Response({"detail":payloadResponse["error"]},
+						status.HTTP_400_BAD_REQUEST )			
+		else: return Response(status.HTTP_201_CREATED)	
+		
+	def delete(self, request,pk, *args, **kwargs):
+		"""Revisa errores."""
+		try:				
+			 self.check_object_permissions(request,pk)			
+		except ValidationError as e:
+			return Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST,)	
+		
+		
+		dictionary = dict(pk=pk,
+						  username = request.DATA.get("username"),
+						  password = request.DATA.get("password"))
+						  
+						      	
+		payloadObj= payload("command", "delAccount",dictionary)
+		payloadEncode= messagesHandler.encode(payloadObj)
+		responseEncode = sendAndRecv(messagesHandler,queueName,payloadEncode,2.8)	 
+		payloadResponse= messagesHandler.unpackPayload(responseEncode) 
+		
+		if payloadResponse["type"] == "error":		
+			return Response({"detail":payloadResponse["error"]},
+						status.HTTP_400_BAD_REQUEST )			
+		else:
+			auth_logout(request)	 
+			return Response(status.HTTP_204_NO_CONTENT)	
+		
+		

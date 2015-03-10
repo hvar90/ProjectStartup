@@ -1,0 +1,893 @@
+# Russian translation for socialchan imageboard.
+# Copyright (C) 2011 Paul Miller
+# This file is distributed under the same license as the socialchan package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-17 16:45+0300\n"
+"PO-Revision-Date: 2013-10-17 17:38+0200\n"
+"Last-Translator: Paul Miller <hvar90@gmail.com>\n"
+"Language-Team: LANGUAGE <hvar90@gmail.com>\n"
+"Language: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: templates/board/groups_list.html:26
+msgid "Your groups"
+msgstr "Tus grupos"
+
+#: templates/board/groups_list.html:26
+msgid "You do not have groups by the moment"
+msgstr "Tus grupos"
+
+#: templates/board/groups_list.html:26
+msgid "Click here to edit the group"
+msgstr "Presiona aqui para editar el grupo"
+
+#: templates/board/post.html:26
+msgid "Change photo"
+msgstr "Cambia la foto"
+
+#: templates/board/post.html:26
+msgid "Share"
+msgstr "Compartir"
+
+#: templates/board/post.html:26
+msgid "Ago"
+msgstr "Hace"
+
+#: templates/board/post.html:26
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/board/section.html:26
+msgid "Picture"
+msgstr "imagen"
+
+#: templates/board/section.html:26
+msgid "Follow"
+msgstr "Seguir"
+
+#: templates/board/section.html:26
+msgid "Unfollow"
+msgstr "Dejar de seguir"
+ 
+msgid ""
+"In Schan you can participate on groups "
+"and discuss about your favorite topics, "
+"if you partipate on a group you will find people with similar interests "
+"and you will expand your network of contacts, "
+"you can also share your photos and videos to create funny discussions. "
+"And all this is free"
+msgstr ""
+"En Schan tu puedes participar en grupos "
+"y discutir sobre tus temas favoritos, "
+"si entras a un grupo encontraras personas con tus mismos intereses "
+"y ampliaras tu red de contactos, "
+"Tambien puedes compartir fotos y videos para crear divertidas discusiones. "
+"Y todo esto es gratis"
+
+
+#: api1/views.py:119
+msgid "Your post contains blacklisted word."
+msgstr "Tu post contiene una palabra no permitida"
+
+#: api1/views.py:129
+msgid "This thread is closed, you cannot post to it."
+msgstr "Este hilo esta cerrado, tu no puedes postear"
+
+#: api1/views.py:138
+msgid "Invalid file type"
+msgstr "Tipo invalido de archivo"
+
+#: api1/views.py:142
+msgid "Too big file"
+msgstr "Archivo demasiado grande"
+
+#: api1/views.py:161
+msgid "Enter post message or attach a file to your post"
+msgstr "Ingresar mensaje del post o adjuntar archivo a tu post"
+
+#: api1/views.py:166
+msgid "You need to upload file to create new thread."
+msgstr "Tu necesitas subir archivo para crear un nuevo hilo"
+
+#: api1/views.py:171
+msgid "Authentication required to create threads in this section"
+msgstr "iniciar sesión es requerido para crear hilos en esta seccion"
+
+#: api1/views.py:244
+msgid "You need to enter ban reason"
+msgstr "Tu necesitas entrar una Razon de ban"
+
+#: api1/views.py:323
+msgid "Server error"
+msgstr "Error del servidor"
+
+#: api1/views.py:323
+msgid "can't refresh messages"
+msgstr "no se puede refrescar mensajes"
+
+#: api1/views.py:362
+msgid "Error on deleting post #"
+msgstr "Error al eliminar post #"
+
+#: api1/views.py:426
+msgid "Error on updating post #"
+msgstr "Error en modificar post #"
+
+#: api1/views.py:363 api1/views.py:427
+msgid "Password mismatch"
+msgstr "Password no coicide"
+
+#: api1/views.py:363 api1/views.py:427
+msgid "Only the owner of the group or of the post can delete posts"
+msgstr "Solo el propietario del grupo o del post puede eliminar publicaciones"
+
+#: api1/views.py:363 api1/views.py:427
+msgid "Only the owner of the post can update his post"
+msgstr "Solo el propietario del post puede modificar su publicacion"
+
+
+#: api1/views.py:426
+msgid "Error on deleting file #"
+msgstr "Error en eliminacion de archivo #"
+
+
+
+#: board/models.py:124 board/models.py:222
+msgid "Bump date"
+msgstr "Fecha de Bump"
+
+#: board/models.py:125
+msgid "Is pinned"
+msgstr "Esta fijado"
+
+#: board/models.py:126
+msgid "Is closed"
+msgstr "Esta cerrado"
+
+#: board/models.py:127 board/models.py:224 board/models.py:293
+msgid "Is deleted"
+msgstr "Esta borrado"
+
+#: board/models.py:141 board/models.py:219 board/models.py:585
+#: templates/mobile/thread.html:6 templates/pda/thread.html:5
+msgid "Thread"
+msgstr "Hilo"
+
+#: board/models.py:142 templates/section_base.html:31
+msgid "Threads"
+msgstr "Hilos"
+
+#: board/models.py:218
+msgid "PID"
+msgstr "PID"
+
+#: board/models.py:221
+msgid "First post in thread"
+msgstr "Primer post en el hilo"
+
+#: board/models.py:225
+msgid "IP"
+msgstr "IP"
+
+#: board/models.py:226
+msgid "Data"
+msgstr "Dato"
+
+#: board/models.py:227
+msgid "Poster"
+msgstr "Anunciante"
+
+#: board/models.py:229
+msgid "Tripcode"
+msgstr "Tripcode"
+
+#: board/models.py:230 templates/pda/index.html:185
+msgid "Email"
+msgstr "Email"
+
+#: board/models.py:238 
+msgid "Anonymously"
+msgstr "Anonimamente"
+
+#: board/models.py:231
+msgid "Topic"
+msgstr "Tema"
+
+#: board/models.py:232 board/models.py:309 templates/form.html:45
+msgid "File"
+msgstr "Archivo"
+
+
+
+#: board/models.py:248 board/models.py:624
+msgid "Post"
+msgstr "Publicar"
+
+#: board/models.py:249
+msgid "Posts"
+msgstr "Publicaciones"
+
+#: board/models.py:291
+msgid "Original name"
+msgstr "Nombre original"
+
+#: board/models.py:292 board/models.py:372
+msgid "Type"
+msgstr "Tipo"
+
+#: board/models.py:294
+msgid "Hash"
+msgstr "Hash"
+
+#: board/models.py:295
+msgid "Location"
+msgstr "Ubicacion"
+
+#: board/models.py:296
+msgid "Thumbnail"
+msgstr "iniatura"
+
+#: board/models.py:298
+msgid "Image width"
+msgstr "Ancho de imagen"
+
+#: board/models.py:300
+msgid "Image height"
+msgstr "Altura de imagen"
+
+#: board/models.py:310
+msgid "Files"
+msgstr "Archvos"
+
+#: board/models.py:329
+msgid "Extension"
+msgstr "Extension"
+
+#: board/models.py:330
+msgid "MIME"
+msgstr "MIME"
+
+#: board/models.py:331 board/models.py:374
+msgid "Group"
+msgstr "Grupo"
+
+#: board/models.py:336
+msgid "File type"
+msgstr "Tipo de archivo"
+
+#: board/models.py:337 board/models.py:383
+msgid "File types"
+msgstr "Tipos de archivo"
+
+#: board/models.py:345 board/models.py:370 board/models.py:470 templates/new_section.html
+msgid "Name"
+msgstr "Nombre"
+
+#: board/models.py:351 board/models.py:352
+msgid "File type group"
+msgstr "Tipo de grupo de archivo"
+
+#: board/models.py:361
+msgid "Default"
+msgstr "Default"
+
+#: board/models.py:362
+msgid "Classifieds"
+msgstr "Clasificados"
+
+#: board/models.py:363
+msgid "News"
+msgstr "Noticias"
+
+#: board/models.py:364
+msgid "International"
+msgstr "Internacional"
+
+#: board/models.py:366
+msgid "Chat"
+msgstr "Chat"
+
+#: templates/new_section.html
+msgid "Eg. hi, welcome to my group feel free to post"
+msgstr "Ej. hola, bienvenido a mi grupo sientete libre de comentar"
+
+#: board/models.py:369 templates/new_section.html
+msgid "Slug"
+msgstr "Disminutivo"
+
+#: board/models.py:371
+msgid "Description"
+msgstr "Descripcion"
+
+#: board/models.py:376
+msgid "Force to post file on thread creation"
+msgstr "Forzar a subir archivo en la creacion de un hilo"
+
+#: board/models.py:377
+msgid "Filesize limit"
+msgstr "Limite de tamano de archivo"
+
+#: board/models.py:379
+msgid "Force anonymity"
+msgstr "Forzar anonimato"
+
+#: board/models.py:380
+msgid "Default poster name"
+msgstr "Default nombre de poster"
+
+#: board/models.py:381
+msgid "Anonymous"
+msgstr "Anonimo"
+
+#: board/models.py:384
+msgid "Max posts in thread"
+msgstr "Max posts en hilo"
+
+#: board/models.py:386
+msgid "Max threads"
+msgstr "МAx Hilos"
+
+#: board/models.py:398
+msgid "Section"
+msgstr "Seccion"
+
+#: board/models.py:399 templates/mobile/index.html:8
+#: templates/pda/index.html:20 templates/pda/index.html.py:172
+msgid "Sections"
+msgstr "Secciones"
+
+#: board/models.py:471
+msgid "Order"
+msgstr "Orden"
+
+#: board/models.py:472
+msgid "Is hidden"
+msgstr "Esta oculto"
+
+#: board/models.py:477
+msgid "Section group"
+msgstr "Seccion grupo"
+
+#: board/models.py:478
+msgid "Section groups"
+msgstr "Seccion grupos"
+
+#: board/models.py:512
+msgid "Word"
+msgstr "Palabra"
+
+#: board/models.py:516
+msgid "Wordfilter"
+msgstr "Filtro de palabra"
+
+#: board/models.py:517
+msgid "Wordfilters"
+msgstr "Filtro de palabras"
+
+#: board/models.py:525
+msgid "IP network"
+msgstr "IP-red"
+
+#: board/models.py:526
+msgid "Either IP address or IP network specification"
+msgstr "Dirección IP o especificación de red IP"
+
+#: board/models.py:527
+msgid "Ban reason"
+msgstr "Razon de ban"
+
+#: board/models.py:532
+msgid "Denied IP"
+msgstr "Denegada IP"
+
+#: board/models.py:533
+msgid "Denied IPs"
+msgstr "Denegadas IPs"
+
+#: board/models.py:569 board/models.py:577
+msgid "Last threads of section"
+msgstr "Ultimos hilos de seccion"
+
+#: board/models.py:609 board/models.py:617
+msgid "Last posts of thread"
+msgstr "Ultimos mensajes del hilo "
+
+#: board/views.py:42
+msgid "Nothing found"
+msgstr "Nada encontrado"
+
+#: templates/404.html:3 templates/404.html.py:4
+msgid "Not found"
+msgstr "No encontrado"
+
+#: templates/500.html:3 templates/500.html.py:4
+msgid "Internal server error"
+msgstr "Error interno del servidor"
+
+#: templates/api.html:4
+msgid "API"
+msgstr "API"
+
+#: templates/api.html:7
+msgid "Example URLs"
+msgstr "Ejemplo de URLs"
+
+#: templates/banlist.html:5 templates/modindex.html:4
+msgid "Mod control panel"
+msgstr "Panel de control del mod"
+
+#: templates/banlist.html:5
+msgid "Ban list"
+msgstr "Lista de bans"
+
+#: templates/banned.html:3
+msgid "Banned"
+msgstr "Вaneado!"
+
+#: templates/banned.html:4
+msgid "You've been banned from this board"
+msgstr "Tu has sido baneado de este board"
+
+#: templates/banned.html:5
+msgid "Reason"
+msgstr "Razon"
+
+#: templates/base.html:46
+msgid "Back"
+msgstr "Volver"
+
+#: templates/base.html:58 templates/index.html:149 templates/pda/index.html:12
+msgid "Runs on"
+msgstr "Se ejecuta en"
+
+#: templates/form.html
+msgid "publish"
+msgstr "publicar"
+
+#: templates/form.html
+msgid "cancel"
+msgstr "cancelar"
+
+#: templates/form.html:8
+msgid "Left this field empty"
+msgstr "(Dejar este campo vacio)"
+
+#: templates/form.html:8
+msgid "hold CTRL for multiple images"
+msgstr "manten presionado CTRL para multiples imagenes"
+
+#: templates/form.html:52
+msgid "Captcha"
+msgstr "Captcha"
+
+#: templates/form.html:52
+msgid "Add files..."
+msgstr "Añadir imagenes..."
+
+#: templates/navigation.html:6
+msgid "Not Safe For Work"
+msgstr "No seguro para trabajar"
+
+
+#: templates/navigation.html:6
+msgid "NSFW"
+msgstr "NSFW"
+
+#: templates/navigation.html:7 templates/settings.html:3
+#: templates/sidebar.html:20 templates/pda/index.html:174
+msgid "Settings"
+msgstr "Configuracion"
+
+#: templates/navigation.html:9 templates/sidebar.html:21
+#: templates/pda/index.html:180
+msgid "Mobile version"
+msgstr "Version Movil"
+
+#: templates/navigation.html:10 templates/sidebar.html:22
+#: templates/mobile/index.html:7
+msgid "PDA version"
+msgstr "version PDA"
+
+#: templates/post.html:36 templates/sidebar.html:5
+msgid "Hide"
+msgstr "Ocultar"
+
+#: templates/post.html 
+msgid "Add to Twitter"
+msgstr "Agregar a twitter"
+
+#: templates/post.html 
+msgid "skipped answers"
+msgstr "respuestas omitidas"
+
+#: templates/post.html 
+msgid "skipped images"
+msgstr "imagenes omitidas"
+
+#: templates/post.html
+msgid "Add to feed"
+msgstr "Agregar al canal"
+
+#: templates/post.html
+msgid "See thread"
+msgstr "Ver hilo"
+
+#: templates/post.html
+msgid "RSS feed"
+msgstr "RSS canal"
+
+#: templates/section_base.html:13 templates/search_sections.html 
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/section_base.html:14
+msgid "OP-post"
+msgstr "OP-post"
+
+#: templates/section_base.html:14
+msgid "Group created by:"
+msgstr "Grupo creado por:"
+
+#: templates/section_base.html:30
+msgid "Everything"
+msgstr "Todo"
+
+#: templates/section_base.html
+msgid "Share this group with friends"
+msgstr "Comparte este grupo con tus amigos"
+
+#: templates/section_base.html
+msgid "Public here"
+msgstr "Pública aquí"
+
+#: templates/section_base.html:36
+msgid "Delete posts"
+msgstr "Eliminar posts"
+
+#: templates/section_base.html:39
+msgid "Only files"
+msgstr "Solo archivos"
+
+#: templates/section_base.html:43
+msgid "Delete all messages from IP"
+msgstr "Eliminar todos los mensajes de la IP"
+
+#: templates/section_base.html:46
+msgid "Ban IP"
+msgstr "Prohibir IP"
+
+#: templates/section_thread.html:3
+msgid "Thread title"
+msgstr "Titulo del hilo"
+
+#: templates/section_thread.html:12
+msgid "Expand images"
+msgstr "Expandir imagenes"
+
+#: templates/section_thread.html:14
+msgid "Filter posts"
+msgstr "Filtrar posts"
+
+#: templates/section_thread.html:17
+msgid "with images"
+msgstr "con imagenes"
+
+#: templates/section_thread.html:20
+msgid "reply count"
+msgstr "contador de respuestas"
+
+#: templates/settings.html:8
+msgid "Style"
+msgstr "Estilo"
+
+#: templates/settings.html:9
+msgid "Features"
+msgstr "Detalles"
+
+#: templates/settings.html:10 templates/new_section.html
+msgid "Various"
+msgstr "Varios"
+
+#: templates/settings.html:15
+msgid "Board style"
+msgstr "Estilo board"
+
+#: templates/settings.html:29
+msgid "New style form"
+msgstr "Nuevo estilo de formulario"
+
+#: templates/settings.html:35
+msgid "Move form to the bottom"
+msgstr "Mover formulario al fondo"
+
+#: templates/settings.html:41
+msgid "Hard posts hide"
+msgstr "Ocultar post completamente"
+
+#: templates/settings.html:47
+msgid "Minimalistic form"
+msgstr "Formulario minimalista"
+
+#: templates/settings.html:53
+msgid "Show markup panel"
+msgstr "Incluir panel"
+
+#: templates/settings.html:59
+msgid "Enable desktop notifications"
+msgstr "Habilitar notificaciones de escritorio"
+
+#: templates/settings.html:67
+msgid "Disable quick reply"
+msgstr "Deshabilitar respuesta rapida"
+
+#: templates/settings.html:73
+msgid "Show sidebar"
+msgstr "Mostrar barra lateral"
+
+#: templates/settings.html:79
+msgid "Hide navigation"
+msgstr "Ocultar navegacion"
+
+#: templates/settings.html:85
+msgid "Hide sections banner"
+msgstr "Ocultar seccion de banner"
+
+#: templates/settings.html:91
+msgid "Disable post autoload"
+msgstr "Deshabilitar autorecarga de post"
+
+#: templates/settings.html:97
+msgid "Disable posts preview"
+msgstr "Deshabilitar previsualizacion de posts"
+
+#: templates/settings.html:103
+msgid "Disable answers map"
+msgstr "Deshabilitar mapa de respuestas"
+
+#: templates/sidebar.html:5
+msgid "Hide sidebar"
+msgstr "Ocultar barra lateral"
+
+#: templates/sidebar.html:17
+msgid "Links"
+msgstr "Links"
+
+#: templates/storage.html:10
+msgid "Remove from feed"
+msgstr "Eliminar del canal"
+
+#: templates/storage_tab.html:4
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/mobile/base.html:6
+msgid "mobile"
+msgstr "Movil"
+
+#: templates/mobile/index.html:6 templates/pda/index.html:179
+msgid "Default version"
+msgstr "version верDefaultсия"
+
+#: templates/pda/index.html:10
+msgid "anonymous imageboard"
+msgstr "imageboard anonimo"
+
+#: templates/pda/index.html:16 templates/register_login.html
+msgid "Close"
+msgstr "Cerrar"
+
+#: templates/pda/index.html:169
+msgid "Information"
+msgstr "informacion"
+
+#: templates/pda/index.html:182
+msgid "Ideas and suggestions"
+msgstr "Ideas y sugerencias"
+
+#: templates/pda/index.html:186
+msgid "Jabber"
+msgstr "Jabber"
+
+#: templates/pda/index.html:189
+msgid "Add this page to your home screen"
+msgstr "Agregar esta pagina a tu pantalla de inicio"
+
+#: templates/pda/section.html:26
+msgid "load more"
+msgstr "cargar mas"
+
+#: templates/board/post.html:26
+msgid "Reply"
+msgstr "Responder"
+
+#: templates/form.html
+msgid "Insert emoticons"
+msgstr "Insertar emoticones"
+
+#: templates/post.html:67
+# sin funcionar!!!!!!!!!!!
+msgid "skipped post" 
+msgstr "post omitido"
+
+# sin funcionar!!!!!!!!!!!
+#: templates/post.html:67
+msgid "missing images"
+msgstr "imagen omitida"
+
+#: templates/post.html:30
+msgid "Answer"
+msgstr "Respuesta"
+
+#: templates/new_section.html
+msgid "Thematic"
+msgstr "Tematica"
+
+#: templates/new_section.html
+msgid "Creative"
+msgstr "Creativo!"
+
+#: templates/index.html
+msgid "Publications"
+msgstr "publicaciones"
+
+#: templates/new_section.html
+msgid "Complete the form to create a group about your favorite topic"
+msgstr "Completa el formulario para crear un grupo sobre tu tema favorito"
+
+#: templates/edit_section.html
+msgid "Complete the form to modify your group"
+msgstr "Completa el formulario para modificar tu grupo"
+
+#: templates/new_section.html
+msgid "Eg. soccer"
+msgstr "Ej. futbol"
+
+#: templates/new_section.html
+msgid "5 letters that identify your group"
+msgstr "5 letras que identifiquen tu grupo"
+
+#: templates/new_section.html
+msgid "Eg. In this group you can post about soccer and everything related to this sport"
+msgstr "Ej. En este grupo tu puedes hablar sobre futbol y todo lo relcacionado con este deporte"
+
+#: templates/new_section.html
+msgid "Japanese culture"
+msgstr "Cultura japonesa"
+
+#: templates/new_section.html
+msgid "Send"
+msgstr "Enviar"
+
+#: templates/search_sections.html
+msgid "Limit my search to the category"
+msgstr "Limitar mi busqueda a la categoria"
+
+#: templates/search_sections.html
+msgid "Find people by username, name or email"
+msgstr "Encuentra personas por nombre de usuario, nombre, apellidos o email"
+
+#: templates/search_sections.html
+msgid "Searcher"
+msgstr "Buscador"
+
+#: templates/search_sections.html
+msgid "here"
+msgstr "aqui"
+
+#: templates/search_sections.html
+msgid "If you do not find the group that you are looking for you, so you can create your own group"
+msgstr "Si tu no encuentras el grupo que estas buscando puedes crear tu propio grupo"
+
+#: templates/index_base.html
+msgid "search more groups"
+msgstr "buscar mas grupos"
+
+#: templates/index_base.html
+msgid "Hi"
+msgstr "Hola"
+
+#: templates/index_base.html
+msgid "Logout"
+msgstr "Salir"
+
+#: templates/index.html
+msgid "classifieds"
+msgstr "clasificados"
+
+#: templates/index.html
+msgid "news"
+msgstr "noticias"
+
+#: templates/index.html
+msgid "events"
+msgstr "eventos"
+
+#: templates/index_base.html
+msgid "Do you want to join? login or register"
+msgstr "¿quieres unirte? iniciar sesión o registrarse"
+
+#: templates/map_select_classified.html
+msgid "Select the location of your classified"
+msgstr "Seleccione la ubicación de su clasificado"
+
+#: templates/map_select_classified.html
+msgid "accept"
+msgstr "aceptar"
+
+#: templates/map_select_classified.html
+msgid "Name_of_place,_City"
+msgstr "Nombre_del_lugar,_ciudad"
+
+
+#: templates/map_location_classified.html
+msgid "Location of classified"
+msgstr "Ubicación del clasificado"
+
+#: board/models.py
+msgid "Maximum allowed files are 9."
+msgstr "Maximo numero de archivos permitidos son 9F."
+
+#: board/models.py
+msgid "Books"
+msgstr "Libros"
+
+#: board/models.py
+msgid "Comics"
+msgstr "Historietas"
+
+#: board/models.py
+msgid "Fashion & style"
+msgstr "Moda & estilo"
+
+#: board/models.py
+msgid "Medicine"
+msgstr "Medicina"
+
+#: board/models.py
+msgid "Music"
+msgstr "Musica"
+
+#: board/models.py
+msgid "Nature & animals"
+msgstr "Naturaleza y animales"
+
+#: board/models.py
+msgid "Politics"
+msgstr "Politica"
+
+#: board/models.py
+msgid "Programming"
+msgstr "Programacion"
+
+#: board/models.py
+msgid "Science & technology"
+msgstr "Ciencia & tecnologia"
+
+#: board/models.py
+msgid "Sport"
+msgstr "Deporte"
+
+#: board/models.py
+msgid "TV and films"
+msgstr "Tv y peliculas"
+
+#: board/models.py
+msgid "Videogames"
+msgstr "Videojuegos"
+
+#: board/models.py
+msgid "Photography"
+msgstr "Fotografia"
+
+#: board/models.py
+msgid "Questions"
+msgstr "Preguntas"

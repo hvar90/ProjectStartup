@@ -1,0 +1,163 @@
+from django.contrib.auth.models	    import User
+from django.core.paginator			import Paginator
+from django.utils.translation		import ugettext as _
+from rest_framework				    import status
+from rest_framework.response		import Response
+from rest_framework.views			import APIView
+from message.models				    import Message_receive,Message_send
+from user_profile.models			import UserProfile
+from rest_framework.permissions	    import IsAuthenticated
+from .resources					    import *
+from .permissions					import IsOwnerMessageSend,IsOwnerMessageReceive
+from appSocialchan.src.socialchanCore.core.common                       import payload
+from appSocialchan.src.socialchanCore.core.messagesHandler              import MessagesHandler
+import xmlrpclib
+
+
+messagesHandler = xmlrpclib.ServerProxy('http://localhost:8081')
+messagesHandlerAux= MessagesHandler()
+
+class ValidationError(Exception):
+	"""
+		The error raised when content created by user is invalid.
+		NOTE: django.forms.ValidationError is unusable here
+			  because we need to serialize the exception.
+	"""
+	pass
+	
+def create_msg(request, view):
+	
+	formsendmsg = MessageSendResource.Meta.form(request.POST)
+	formreceivemsg = MessageReceiveResource.Meta.form(request.POST)
+	to = request.POST.get("to_user")
+	msg = request.POST.get("msg")	
+	
+	if not to and  not msg:
+		raise ValidationError(
+			_("Enter user and message")
+		)	
+	elif not to:
+		raise ValidationError(
+			_("Enter user")
+		)
+	elif not msg:
+		raise ValidationError(
+			_("Enter message")
+		)	
+	elif not User.objects.filter(username=to).exists():
+		raise ValidationError(
+			_("Username does not exist")
+		)	
+	elif UserProfile.blacklist.through.objects.filter(to_userprofile=request.user.profile, from_userprofile=User.objects.filter(username=to)).exists():
+		raise ValidationError(
+			_("You can not send messages to this user because you are blacklisted")
+		)		
+	elif not formsendmsg.is_valid():
+		raise ValidationError(dict(form.errors))
+	else:		
+		 recipient_sent=formsendmsg.save(commit= False)
+		 recipient_received=formreceivemsg.save(commit= False)		
+		 
+		 recipient_sent.fromThe = recipient_received.fromThe  = request.user.profile
+		 recipient_sent.to = recipient_received.to = User.objects.get(username=to).profile
+		 
+		 #recipient_sent.save()
+		 #recipient_received.save()
+		 recipient_sent= Message_send(fromThe_id=4, to_id=4, msg='Cheddar Talk') 
+		 payloadObj= payload("command", "save", recipient_sent)
+		 payloadEncode= messagesHandlerAux.encode(payloadObj)
+		 messagesHandler.send("usersHandlerQueue", payloadEncode)
+		 #payloadObj= payload("command", "save", recipient_received)
+		 #payloadEncode= messagesHandlerAux.encode(payloadObj)
+		 #messagesHandler.send("usersHandlerQueue", payloadEncode)		
+		 
+		 
+	return
+		
+class MessageCreateView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def post(self, request, *args, **kwargs):
+		"""Checks user for errors ."""		
+		try:
+			create_msg(request,self)
+		except ValidationError as e:
+			return Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST)		 
+		return Response(status.HTTP_201_CREATED)
+
+		
+class MessageSendDeleteView(APIView):
+	permission_classes = (IsAuthenticated,IsOwnerMessageSend,)
+	def delete(self, request, *args, **kwargs):
+		"""Checks user for errors ."""		
+		try:
+			msg =  MessageSendResource.Meta.model.objects.get(id=request.DATA.get("idmsg"))
+			self.check_object_permissions(request, msg)
+			msg.delete()			   
+		except ValidationError as e:
+			raise Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST )		 
+		return Response(status=status.HTTP_204_NO_CONTENT)  
+		
+class MessageReceiveDeleteView(APIView):
+	permission_classes = (IsAuthenticated,IsOwnerMessageReceive,)
+	def delete(self, request, *args, **kwargs):
+		"""Checks user for errors ."""		
+		try:
+			msg = MessageReceiveResource.Meta.model.objects.get(id=request.DATA.get("idmsg"))
+			self.check_object_permissions(request, msg)
+			msg.delete()			   
+		except ValidationError as e:
+			raise Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST )		 
+		return Response(status=status.HTTP_204_NO_CONTENT)		 
+		
+class MessageSendDeleteAllView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def delete(self, request, *args, **kwargs):
+		"""Checks user for errors ."""		
+		try:
+			Message_send.objects.filter(fromThe=request.user.profile).delete()			   
+		except ValidationError as e:
+			raise Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST )		 
+		return Response(status=status.HTTP_204_NO_CONTENT)
+		
+class MessageReceiveDeleteAllView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def delete(self, request, *args, **kwargs):
+		"""Checks user for errors ."""		
+		try:
+			Message_receive.objects.filter(to=request.user.profile).delete()			   
+		except ValidationError as e:
+			raise Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST )		 
+		return Response(status=status.HTTP_204_NO_CONTENT)
+		
+class SentMessageView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def get(self, request, *args, **kwargs):
+		messages = MessageSendResource.Meta.model.objects.search_msg_sent_user(request.user.profile)	   
+		p = Paginator(messages, 10)
+		pagemsg = p.page(request.GET.get("page"))
+		serializer = PaginatedMessageSendSerializer(instance=pagemsg)
+		return Response(serializer.data, status.HTTP_200_OK)
+		
+class ReceivedMessageView(APIView):
+	permission_classes = (IsAuthenticated,)
+	def get(self, request, *args, **kwargs):
+		messages = MessageReceiveResource.Meta.model.objects.search_msg_received_user(request.user.profile)	   
+		p = Paginator(messages, 10)
+		pagemsg = p.page(request.GET.get("page"))
+		serializer = PaginatedMessageReceiveSerializer(instance=pagemsg)	  
+		return Response(serializer.data, status.HTTP_200_OK)
+		
+class ChangeStateMsgReadView(APIView):
+	permission_classes = (IsAuthenticated,IsOwnerMessageReceive,)
+	def put(self, request, *args, **kwargs):
+		"""Checks user for errors ."""	   
+		try:		   
+			self.check_object_permissions(request,Message_receive.objects.get(id=request.DATA.get("idmsg")))
+			Message_receive.objects.filter(id=request.DATA.get("idmsg")).update(msg_read= bool(request.DATA.get("value")))				
+			   
+		except ValidationError as e:
+			raise Response({"detail": e.message}, status.HTTP_400_BAD_REQUEST )		   
+	   
+		return Response()
+   
+

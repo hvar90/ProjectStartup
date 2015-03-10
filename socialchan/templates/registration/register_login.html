@@ -1,0 +1,73 @@
+{% load i18n %}
+<div id="window-login-register">
+    <a class="b-close register_login_close"> {% trans "Close" %} </a>
+   
+    <h3> {% trans "You have to login or register to do that" %}  </h3>
+    </br>
+    </br>
+    <div class="right-login-register "> 
+		</br>
+		</br>
+		<h3> {% trans "SIGN IN" %}</h3>
+		<p> {% trans "¿Have you have an account and just want to login?" %}  </p> 
+		</br>
+		</br>   
+		
+		<form class="" name="login" id="login"  method="POST" >	  
+				
+		   <label class="" >{% trans "Username" %}: </label></br>
+		   <input type="text"   id="username" name="username" value="" required></br>		  
+		   <label class="" >{% trans "Password" %}: </label></br>
+		   <input type="password" id="password" name="password" value=""  required></br></br>		   
+		   <input type="submit" value={% trans "Sign in" %} id="submit-button" />  		 
+				
+		</form>
+    
+    </div>
+    <div class="left-login-register ">  
+    
+		<div class="left-register "> 
+		
+			 <h3> {% trans "CREATE A NEW ACCOUNT" %}  </h3></br>	
+			<form class="" name="register" id="register"  method="POST" >
+				 		
+			   <label class="" >{% trans "Username" %}: </label></br>
+			   <input type="text"  id="username" name="username" pattern="[a-zA-Z0-9-]+" value="" maxlength="10" required></br>
+			   <label class="" >{% trans "Email account recovery" %}: </label></br>
+			   <input type="text"   id="email" name="email" value="" required></br>		  
+			   <label class="" >{% trans "Password" %}: </label></br>
+			   <input type="password" id="password" name="password" value=""  required></br>
+			   <label class="" >{% trans "Confirm password" %}: </label></br>
+			   <input type="password" id="repassword" name="repassword" value=""  required></br>	
+			   <label for="recaptcha_response_field">{% trans "Captcha" %}</label></br>	  
+			   <div id="recaptcha_widget">
+                <div id="recaptcha_image" onclick="Recaptcha.reload();" class="captcha-img"></div>
+                <input type="text" name="recaptcha_response_field" id="recaptcha_response_field" size="16" maxlength="32" class="captcha">
+               </div>
+               {{ form.captcha }}
+               </br>
+               </br>
+               <input type="submit" value={% trans "Create account" %} id="submit-button" />   
+			
+	         </form>
+			 
+			
+		 
+		</div>
+		<div class="right-register "> 
+		
+			
+			<b> {% trans "Our philosophy" %}</b>			
+			<ul>
+				</br>
+				<li type="disc">{% trans "We never disclose information for any reason only if required by law" %}.</li></br>
+				<li type="disc">{% trans "In this site all types of content than not be pornography or gore is allowed" %}.</li></br>
+				<li type="disc">{% trans "This site monitors the publications and if found an infringement will be penalized by removing or not allowing the publication again and entrance to the site to the offending user" %}.</li></br>
+			</ul>		    
+		 
+		</div>
+    
+    </div>
+    
+    
+</div>

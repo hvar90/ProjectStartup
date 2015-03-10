@@ -1,0 +1,126 @@
+{% load  settings i18n call_method%}
+<article style="display:none;" class="post" data-id="{{ post.id }}" id="post{{ post.pid }}" >
+	{% if post.is_op_post %}
+		<div class="panel-post-4 ">
+			<div class="cont-avatar">			
+				{% if post.user_profile.profile_picture and not post.is_anonymous %}				
+				   <img src="{% setting 'MEDIA_URL' %}{{ post.user_profile.profile_picture}}" alt="" width="50" height="50" class="user"/> 				   
+				{% else %}
+				   <img src="{% setting 'STATIC_URL' %}image/user.png" alt="" width="50" height="50" class="user" />
+				{% endif %}			
+			</div>
+		</div>
+	{% endif %}		
+	<div class="panel-post-8">
+		<div class="header-post">	
+		     {% if user.is_authenticated and section.type_section != 6 %}
+			  <i class="fa fa-times fa-2x del-post-button colorred" post-id={{ post.id }} ></i> 
+			 {% endif %}		
+			 {% if not post.is_anonymous %}      
+				<span class="user-post">
+				  <a href="/user/{{ post.poster }}">{{ post.poster }}</a>
+				</span>         
+			 {% else %}  
+				{% language settings.LANGUAGE_CODE %}
+				   {% trans post.poster %}
+				{% endlanguage %}          
+			 {% endif %}
+<!--
+			<span class="data-post">
+				<p class="data-time">{% trans "Ago" %} {{ post.date|timesince }}</p>
+			</span>
+-->
+			
+			{% if  section.type_section != 6 %}				 	
+			  <span class="number replyPost cursor" data-num="{{ post.pid }}" thread-id="{{ thread.id }}" > {{ post.pid }}</span>
+			  {% if post.is_op_post and thread.count.skipped > 0 %}
+				  <span >
+				   <i class="fa fa-caret-square-o-down fa-2x expand-post-button cursor" id="expand{{ post.id }}" post-id={{ post.id }} ></i>			  
+				   <i style="display:none;" class="fa fa-caret-square-o-up fa-2x collapse-post-button  cursor " id="collapse{{ post.id }}" post-id={{ post.id }} ></i> 
+				  </span>
+			  {% endif %}				
+			{% endif %}
+		
+		</div>
+		<div class="body-post">						
+			{% for file in post.files.all %}
+			  <img src="{% setting 'MEDIA_URL' %}{{ file.file }}" alt="{{ file.hash }}" >
+			{% endfor %}
+			<div class="message">
+			  {% autoescape off %}			  
+			   <p class="content">
+				  {{ post.message_html }}
+			   </p>			  
+			  {% endautoescape %}
+			</div>	
+			 {% if post.is_op_post and thread.count.skipped > 0 %}
+				<span class="skipped">{% language 'es-CO' %}{% trans 'skipped answers' %}{% endlanguage %}: {{ thread.count.skipped }}</span>
+			 {% endif %}					
+		</div>
+		<div class="footer-post">	
+		   
+		    {% if user.is_authenticated  %}
+			  {% if user.profile|args:post.id|call:"is_owner_post" %}
+					  <span class="respond"><a href="javascript:void(0)" class="edit" msg_post="{{ post.message }}" post_id="{{ post.id }}" >{% trans "Edit" %}</a></span>			
+			  {% endif %}	 
+			{% endif %} 
+		    {% if section.type_section != 6 and post.is_op_post  %}	
+			  <span class="respond"><a href="javascript:void(0)" class="reply" thread_id="{{ thread.id }}" >{% trans "Reply" %}</a></span>
+			
+			{% endif %}	
+			
+			{% if  section.type_section != 6 %} 
+				<div class="share-post">
+					<p>{% trans "Share" %}:</p>
+					{% url 'board.views.thread' post.section_slug post.pid  as thread_url %}
+					<ul>									
+						<li><a id="twitter_button{{ post.pid }}" target="_blank" class="fa fa-twitter-square fa-lg"></a></li>			  
+						<li><i data-post="{% setting 'SITE_URL' %}{{post.section_slug }}#post{{post.pid}}  {{post.message}}" class="fa fa-facebook-square fa-lg faf"></i></li>					
+						<span id="googleBtn" class="btngoogle g-interactivepost"
+							data-clientid="11178319894-qfqtqfeen3p4sflqamp3lglc2p0bglfk.apps.googleusercontent.com"
+							data-contenturl="{% setting 'SITE_URL' %}"
+							data-calltoactionlabel="ACCEPT"
+							data-calltoactionurl="{% setting 'SITE_URL' %}{{post.section_slug }}#post{{post.pid}}"
+							data-cookiepolicy="single_host_origin"
+							data-prefilltext="{{post.message}}"
+							key="AIzaSyA_G-W-0pYqCjmcDr6N0Ta3FkWQTkgabv0"
+							data-contentdeeplinkid="{% setting 'SITE_URL' %}{{post.section_slug }}#post{{post.pid}}">						
+							<li><i class="fa fa-google-plus-square fa-lg"></i></li>
+						</span>				    
+						<li id="tumblr_button{{ post.pid }}" ></li>
+						  <script type="text/javascript">
+							var url= encodeURIComponent('{% setting 'SITE_URL' %}{{post.section_slug }}#post{{post.pid}}') 
+							var btn_twitter= document.getElementById("twitter_button{{ post.pid }}")
+							btn_twitter.setAttribute("href", "http://www.twitter.com/share?url=" + url + "&text=" + "{{post.message|urlencode}}"); 
+							var tumblr_button = document.createElement("a");
+							tumblr_button.setAttribute("href", "http://www.tumblr.com/share/link?url=" + url + "&name=" + encodeURIComponent('Socialchan') + "&description=" +"{{post.message|urlencode}}");
+							tumblr_button.setAttribute("title", "Share on Tumblr");
+							tumblr_button.setAttribute("target", "_blank");
+							tumblr_button.setAttribute("class", "fa fa-tumblr-square fa-lg");					
+							document.getElementById("tumblr_button{{ post.pid }}").appendChild(tumblr_button);
+						</script>
+					</ul>
+				</div>
+			{% endif %} 
+		</div>
+		{% if section.type_section != 6 %}	
+			<div class="post-create post-noactive" id="reply_form{{ thread.id }}" >
+			 <div class="post-center">			
+				{% with thread.id as id %}
+					{% include "board/form.html" %}
+				{% endwith %}			
+			</div>
+		   </div>
+	    {% endif %} 
+	   <div class="post-create post-noactive" id="edit_form{{ post.id }}" >
+		 <div class="post-center">			
+			{% with post.id as id %}
+			  {% with edit=1 %}
+				{% include "board/form.html" %}
+			  {% endwith %}	 	
+			{% endwith %}			
+		</div>
+	   </div>
+    </div>	
+</article>
+	

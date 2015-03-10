@@ -1,0 +1,53 @@
+{% load i18n %}
+<div class="box1">
+  <nav>
+    <div class="nav">
+    <div class="nl">
+      <h3>{{ navigation.0.name }}</h3>
+      <ul>
+      {% for section in navigation.0.sections|slice:":13" %}
+        <li><a href="/{{ section.slug }}/">{{ section.name }}</a></li>
+      {% endfor %}
+      </ul>
+      <ul>
+      {% for section in navigation.0.sections|slice:"13:" %}
+        <li><a href="/{{ section.slug }}/">{{ section.name }}</a></li>
+      {% endfor %}
+      </ul>
+      <br class="clear">
+    </div>
+    <div class="nr">
+      <div class="nr2">
+      <h3>{{ navigation.1.name }}</h3>
+      <ul>
+      {% for section in navigation.1.sections %}
+        <li><a href="/{{ section.slug }}/">{{ section.name }}</a></li>
+      {% endfor %}
+      </ul>
+      <h3>{{ navigation.2.name }}</h3>
+      <ul>
+      {% for section in navigation.2.sections %}
+        <li><a href="/{{ section.slug }}/">{{ section.name }}</a></li>
+      {% endfor %}
+      </ul>
+      </div>
+      <div class="nr3">
+      <h3>{{ navigation.3.name }}<img src="{{ STATIC_URL }}images/18.gif" width="30" height="22" class="yo18"></h3>
+      <ul>
+      {% for section in navigation.3.sections %}
+        <li><a href="/{{ section.slug }}/">{{ section.name }}</a></li>
+      {% endfor %}
+      </ul>
+      <h3>{{ navigation.4.name }}</h3>
+      <ul>
+      {% for section in navigation.4.sections %}
+        <li><a href="/{{ section.slug }}/">{{ section.name }}</a></li>
+      {% endfor %}
+      </ul>
+      </div>
+      <br class="clear">
+    </div>
+    <br class="clear">
+    </div>
+  </nav>
+  </div>

@@ -1,0 +1,256 @@
+[ { "fields" : { "name" : "Images" },
+    "model" : "board.filetypegroup",
+    "pk" : 1
+  },
+  { "fields" : { "name" : "Audio" },
+    "model" : "board.filetypegroup",
+    "pk" : 2
+  },
+  { "fields" : { "name" : "Video" },
+    "model" : "board.filetypegroup",
+    "pk" : 3
+  },
+  { "fields" : { "name" : "Text" },
+    "model" : "board.filetypegroup",
+    "pk" : 4
+  },
+  { "fields" : { "name" : "Archives" },
+    "model" : "board.filetypegroup",
+    "pk" : 5
+  },
+  { "fields" : { "name" : "Flash" },
+    "model" : "board.filetypegroup",
+    "pk" : 6
+  },
+  { "fields" : { "extension" : "jpg",
+        "group" : 1,
+        "mime" : "image/jpeg"
+      },
+    "model" : "board.filetype",
+    "pk" : 1
+  },
+  { "fields" : { "extension" : "jpeg",
+        "group" : 1,
+        "mime" : "image/jpeg"
+      },
+    "model" : "board.filetype",
+    "pk" : 2
+  },
+  { "fields" : { "extension" : "gif",
+        "group" : 1,
+        "mime" : "image/gif"
+      },
+    "model" : "board.filetype",
+    "pk" : 3
+  },
+  { "fields" : { "extension" : "png",
+        "group" : 1,
+        "mime" : "image/png"
+      },
+    "model" : "board.filetype",
+    "pk" : 4
+  },
+  { "fields" : { "extension" : "svg",
+        "group" : 1,
+        "mime" : "image/svg"
+      },
+    "model" : "board.filetype",
+    "pk" : 5
+  },
+  { "fields" : { "extension" : "tiff",
+        "group" : 1,
+        "mime" : "image/tiff"
+      },
+    "model" : "board.filetype",
+    "pk" : 6
+  },
+  { "fields" : { "extension" : "webp",
+        "group" : 1,
+        "mime" : "image/webp"
+      },
+    "model" : "board.filetype",
+    "pk" : 7
+  },
+  { "fields" : { "extension" : "mp3",
+        "group" : 2,
+        "mime" : "audio/mpeg"
+      },
+    "model" : "board.filetype",
+    "pk" : 8
+  },
+  { "fields" : { "extension" : "midi",
+        "group" : 2,
+        "mime" : "audio/midi"
+      },
+    "model" : "board.filetype",
+    "pk" : 9
+  },
+  { "fields" : { "extension" : "ogg",
+        "group" : 2,
+        "mime" : "audio/ogg"
+      },
+    "model" : "board.filetype",
+    "pk" : 10
+  },
+  { "fields" : { "extension" : "3gp",
+        "group" : 3,
+        "mime" : "video/3gpp"
+      },
+    "model" : "board.filetype",
+    "pk" : 11
+  },
+  { "fields" : { "extension" : "mpg",
+        "group" : 3,
+        "mime" : "video/mpeg"
+      },
+    "model" : "board.filetype",
+    "pk" : 12
+  },
+  { "fields" : { "extension" : "mpeg",
+        "group" : 3,
+        "mime" : "video/mpeg"
+      },
+    "model" : "board.filetype",
+    "pk" : 13
+  },
+  { "fields" : { "extension" : "ogv",
+        "group" : 3,
+        "mime" : "video/ogg"
+      },
+    "model" : "board.filetype",
+    "pk" : 14
+  },
+  { "fields" : { "extension" : "mov",
+        "group" : 3,
+        "mime" : "video/quicktime"
+      },
+    "model" : "board.filetype",
+    "pk" : 15
+  },
+  { "fields" : { "extension" : "webm",
+        "group" : 3,
+        "mime" : "videm/webm"
+      },
+    "model" : "board.filetype",
+    "pk" : 16
+  },
+  { "fields" : { "extension" : "flv",
+        "group" : 3,
+        "mime" : "video/x-flv"
+      },
+    "model" : "board.filetype",
+    "pk" : 17
+  },
+  { "fields" : { "extension" : "wmv",
+        "group" : 3,
+        "mime" : "video/x-ms-wmv"
+      },
+    "model" : "board.filetype",
+    "pk" : 18
+  },
+  { "fields" : { "extension" : "avi",
+        "group" : 3,
+        "mime" : "video/x-msvideo"
+      },
+    "model" : "board.filetype",
+    "pk" : 19
+  },
+  { "fields" : { "extension" : "html",
+        "group" : 4,
+        "mime" : "text/html"
+      },
+    "model" : "board.filetype",
+    "pk" : 20
+  },
+  { "fields" : { "extension" : "htm",
+        "group" : 4,
+        "mime" : "text/html"
+      },
+    "model" : "board.filetype",
+    "pk" : 21
+  },
+  { "fields" : { "extension" : "doc",
+        "group" : 4,
+        "mime" : "application/msword"
+      },
+    "model" : "board.filetype",
+    "pk" : 22
+  },
+  { "fields" : { "extension" : "docx",
+        "group" : 4,
+        "mime" : "application/msword"
+      },
+    "model" : "board.filetype",
+    "pk" : 23
+  },
+  { "fields" : { "extension" : "pdf",
+        "group" : 4,
+        "mime" : "application/pdf"
+      },
+    "model" : "board.filetype",
+    "pk" : 24
+  },
+  { "fields" : { "extension" : "txt",
+        "group" : 4,
+        "mime" : "text/plain"
+      },
+    "model" : "board.filetype",
+    "pk" : 25
+  },
+  { "fields" : { "extension" : "swf",
+        "group" : 6,
+        "mime" : "application/x-shockwave-flash"
+      },
+    "model" : "board.filetype",
+    "pk" : 26
+  },
+  { "fields" : { "extension" : "djvu",
+        "group" : 4,
+        "mime" : "image/x-djvu"
+      },
+    "model" : "board.filetype",
+    "pk" : 27
+  }, 
+  { "fields" : { "is_hidden" : false,
+        "name" : "Thematic",
+        "order" : 1
+      },
+    "model" : "board.sectiongroup",
+    "pk" : 1
+  },
+  { "fields" : { "is_hidden" : false,
+        "name" : "Creative",
+        "order" : 2
+      },
+    "model" : "board.sectiongroup",
+    "pk" : 2
+  },
+  { "fields" : { "is_hidden" : false,
+        "name" : "Japanese culture",
+        "order" : 3
+      },
+    "model" : "board.sectiongroup",
+    "pk" : 3
+  },
+  { "fields" : { "is_hidden" : false,
+        "name" : "For adults",
+        "order" : 4
+      },
+    "model" : "board.sectiongroup",
+    "pk" : 4
+  },
+  { "fields" : { "is_hidden" : false,
+        "name" : "Various",
+        "order" : 5
+      },
+    "model" : "board.sectiongroup",
+    "pk" : 5
+  },
+  { "fields" : { "is_hidden" : true,
+        "name" : "Hidden",
+        "order" : 6
+      },
+    "model" : "board.sectiongroup",
+    "pk" : 6
+  }
+]

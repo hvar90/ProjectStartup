@@ -1,0 +1,10 @@
+<div itemscope itemtype="http://data-vocabulary.org/Review" >
+	<section class="thread" id="thread{{ thread.id }}" data-id="{{ thread.id }}">
+		{% for post in thread.posts %}
+
+		  {% include "board/post.html" %}
+
+		{% endfor %}
+	</section>
+</div>
+

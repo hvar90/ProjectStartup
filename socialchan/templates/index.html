@@ -1,0 +1,217 @@
+{% extends "index_base.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ section.name }}{% endblock %}
+
+{% block header %}
+	<header class="{% if not user.is_authenticated %}fixed{% endif %}" >
+		<h1>
+			<a class="logo" href="/">SCHAN</a>
+		</h1>
+		<nav class="wellcome">
+			<ul>
+				{% if not user.is_authenticated %}
+				 <li><a class="" href="/searchmembers">{% trans "Search" %}</a></li>
+				 <li><a class="" href="#groups">{% trans "Groups" %}</a></li>
+				 <li><a class="" href="#sig_in">{% trans "Signup" %}</a></li>
+				 <li><a class="" href="#log_in">{% trans "Signin" %}</a></li>					
+				{% else %}	
+				{% if user.profile.contact_invitation_user.all or user.profile.groups_with_new_post or user.profile.news_accepted_invitation %}
+				 <i class="fa fa-bell"></i>	
+				{% endif %}					 		 
+				 <li><a class="" href="/user/{{ user.username }}">{{ user.username|title }}</a></li>	
+				 <li><a class="" href="/user/friends">{% trans "Friends" %}</a></li>
+				 <li><a class="" href="/searchmembers">{% trans "Search" %}</a></li>
+				 <li><a class="" id='logout' href="">{% trans "Logout" %}</a></li>				 	
+				{% endif %}							
+			</ul>
+		</nav>
+	</header>
+{% endblock %}	
+{% block content %}
+	<div class="main">	
+	      {% if not user.is_authenticated %}
+			<div class="container containerv1">
+				<div class="centercontainer">
+					<div class="leftcont">
+						<p>{% trans "In Schan you can participate on groups and discuss about your favorite topics, if you partipate on a group you will find people with similar interests and you will expand your network of contacts, you can also share your photos and videos to create funny discussions. And all this is free" %}</p>
+						<div class="noimport">
+							<a class="login"  href="#sig_in" >{% trans "Join us" %}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		  {% endif %}
+		    <div class="centercontainer center-text imgplaystore mt10">
+				 <a href="https://play.google.com/store/apps/details?id=schan.main" target="_blank" class="mt20 mb10 imgplaystore">							   	
+					<img src="{{ STATIC_URL }}image/APP-GOOGLE-PLAY-ESPAnOL-1.jpg"  class="imgplaystore" />
+				 </a>			
+			</div>
+			<div id="groups">
+				<section class="nocolm">
+					<div class="titlegroups">
+						<h3>{% trans "Find a group, come and participate in the topics that you like" %}.</h3>
+					</div>
+					<a href="/{{ navigation.0.sections.0.slug }}">
+						<div class="groupmax">
+							<img  src="{{ MEDIA_URL }}{{  navigation.0.sections.0.image }}"  />							
+						</div>
+						<p class="mintitle">{{ navigation.0.sections.0.name }}</p>
+					</a>
+					<div class="colm1 colm">
+						<a href="/{{ navigation.0.sections.1.slug }}">
+							<div class="groups groupani">
+								<img height=82 width=360 src="{{ MEDIA_URL }}{{  navigation.0.sections.1.image }}"  />										
+							</div>
+							<p class="mintitle">{{ navigation.0.sections.1.name }}</p>
+						</a>
+						<a href="/{{ navigation.0.sections.2.slug }}">
+							<div class="groups groupani">
+								<img height=82 width=360 src="{{ MEDIA_URL }}{{  navigation.0.sections.2.image }}"  />										
+							</div>
+							<p class="mintitle">{{ navigation.0.sections.2.name }}</p>
+						</a>							
+					</div>
+					<div class="colm2 colm">
+						<a href="/{{ navigation.0.sections.3.slug }}">
+							<div class="groups groupgamer">
+								<img height=82 width=360 src="{{ MEDIA_URL }}{{  navigation.0.sections.3.image }}"  />								
+							</div>
+							<p class="mintitle">{{ navigation.0.sections.3.name }}</p>
+						</a>
+						<a href="/{{ navigation.0.sections.4.slug }}">
+							<div class="groups groupani">
+								<img height=82 width=360 src="{{ MEDIA_URL }}{{  navigation.0.sections.4.image }}"  />										
+							</div>
+							<p class="mintitle">{{ navigation.0.sections.4.name }}</p>
+						</a>							
+					</div>
+					<div class="colm3 colm">
+						<a href="/{{ navigation.0.sections.5.slug }}">
+							<div class="groups grouppelis">
+								<img height=82 width=360 src="{{ MEDIA_URL }}{{  navigation.0.sections.5.image }}"  />	
+							</div>
+							<p class="mintitle">{{ navigation.0.sections.5.name }}</p>
+						</a>
+						<a href="/{{ navigation.0.sections.6.slug }}">
+							<div class="groups groupani">
+								<img height=82 width=360 src="{{ MEDIA_URL }}{{  navigation.0.sections.6.image }}"  />										
+							</div>
+							<p class="mintitle">{{ navigation.0.sections.6.name }}</p>
+						</a>							
+					</div>				
+				</section>
+	</div>	
+  {% if not user.is_authenticated %}	
+	<div class="main no-login">		
+		<div class="wap" >
+			<div class="left-login" id="log_in" >
+				<h1>{% trans "Signin" %}</h1>
+				<form class="form" id="login" >
+					<p class="boxdata">
+						<label class="image-replace cd-user" for="signin-user">Nombre de usuario</label>
+						<input class="data cd-style" id="" type="user"  name="username" pattern="[a-zA-Z0-9]+" placeholder="{% trans "Username" %}" maxlength="10" required>
+					</p>
+					<p class="boxdata">
+						<label for="signin-password" class="image-replace cd-password">Contraseña</label>
+						<input class="data cd-style" id="signin-password" type="password" name="password" placeholder="******" required>
+					</p>
+<!--
+					<p class="boxdata">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me" class=" cd-style">Recordarme</label>
+					</p>
+-->
+					<p class="boxdata">
+						<div class="boxpass">
+							<input class="pass" type="submit" value={% trans "Signin" %}>
+						</div>
+					</p>
+<!--
+					<p class="boxdata">
+						<p class="message-form"><a href="#">Olvidaste tu contraseña?</a></p>
+					</p>
+-->
+				</form>
+			</div>
+		</div>			
+		<div class="wap" >
+			<div class="left-login" id="sig_in">
+				<h1 >{% trans "Signup" %}</h1>
+				<form class="form" id="sigin">
+					<p class="boxdata">
+						<label class="image-replace cd-user" for="signin-user">Nombre de usuario</label>
+						<input class="data cd-style" id="signin-user" type="user" name="username" pattern="[a-zA-Z0-9]+" maxlength="10"  placeholder="{% trans "Username" %}" required>
+					</p>
+					<p class="boxdata">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="data cd-style" id="signin-email" name="email" type="email" placeholder="example@domain.net" required>
+					</p>
+					<p class="boxdata">
+						<label for="signin-password" class="image-replace cd-password">Contraseña</label>
+						<input class="data cd-style" id="signin-password" name="password" type="password" placeholder="{% trans "Password" %}" required>
+					</p>
+					<p class="boxdata">
+						<label for="signin-password" class="image-replace cd-password">Contraseña</label>
+						<input class="data cd-style" id="signin-password" name="repassword"  type="password" placeholder="{% trans "Confirm password" %}" required>
+					</p>
+<!--
+					<p class="boxdata">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me" class=" cd-style">Recordarme</label>
+					</p>
+-->
+					<p class="boxdata">
+						<div class="boxpass">
+							<input class="pass" type="submit" value="{% trans "Create" %}">
+						</div>
+					</p>
+<!--
+					<p class="boxdata">
+						<p class="message-form"><a href="#">Ya estas registrado! Entra</a></p>
+					</p>
+-->
+				</form>
+			</div>
+		</div>			
+	</div>
+  {% endif %}		
+
+	
+	
+	
+{% endblock %}
+{% block footer %}
+	<footer id="footer">
+		<nav class="itemsfooter">
+			<ul>
+				<li><a href="#">{% trans "Terms and Conditions" %}</a></li>
+				<li><a href="#">{% trans "Policies" %}</a></li>
+				<li><a href="#">{% trans "About us" %}</a></li>
+				<li><a href="#">{% trans "Philosophy" %}</a></li>
+			</ul>
+		</nav>
+		<div class="socialfooter">
+			<a href="https://twitter.com/schan_" target="_blank">
+				<div class="face net">
+					<span class="fa fa-facebook fa-2x noicon"></span>
+				</div>
+			</a>
+			<a href="https://twitter.com/schan_" target="_blank">
+				<div class="twi net">
+					<span class="fa fa-twitter fa-2x noicon"></a></span>
+				</div>
+			</a>
+			<a href="https://twitter.com/schan_" target="_blank">
+				<div class="goplus net">
+					<span class="fa fa-google-plus fa-2x noicon"></span>
+				</div>
+			</a>
+		</div>
+		<div class="copy">
+			<p>© SocialCHAN inc, 2015</p>
+		</div>		
+	</footer>
+{% endblock %}	
+

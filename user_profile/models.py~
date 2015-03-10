@@ -1,0 +1,93 @@
+from django                              import forms
+from django.contrib.auth.models          import User
+from django.db                           import models
+from django.utils.translation            import ugettext_lazy as _
+from django.db.models.signals            import post_save,pre_delete
+
+try:
+    from board                           import fields,tools   
+    from message.models                  import Message_receive
+except ImportError:
+    from appSocialchan.src.boardsHandler.services.objs.board         import fields,tools
+    from appSocialchan.src.usersHandler.services.objs.message.models import Message_receive
+
+class UserProfile(models.Model):
+    """User (moderator etc.)."""
+    user = models.OneToOneField(User, related_name='profile', blank=True)    
+    birthdate = models.DateField(_("Date of birth"), null=True, blank=True)
+    profile_picture = models.FileField(_("Enter or change the current photo"), upload_to="profile_pictures", blank=True)
+    languages = models.CharField(_("Languages"), max_length=300,  default='', blank=True)    
+    phrase = models.CharField(_("Phrase which describes you"), max_length=300, default='', blank=True) 
+    is_mod = models.BooleanField(default=False)   
+    sections = models.ManyToManyField("board.Section",
+        verbose_name=_("User owned sections"), blank=True)
+    blacklist = models.ManyToManyField("self", symmetrical = False, related_name='blacklist_user',
+        verbose_name=_("Blacklist"), blank=True) 
+    contacts = models.ManyToManyField("self", related_name='contacts_user',
+        verbose_name=_("Contacts"), blank=True)
+    contact_invitation = models.ManyToManyField("self", symmetrical = False, related_name='contact_invitation_user', 
+        verbose_name=_("Contact invitation"), blank=True)           
+
+    class Meta:
+        verbose_name = _("User profile")
+        verbose_name_plural = _("User profiles")
+
+    def __unicode__(self):       
+        return unicode(self.user)
+        
+    def is_friend(self, user):
+        """verifica si el usuario es un contacto"""
+        return self.__class__.contacts.through.objects.filter(from_userprofile=self , to_userprofile=user).exists()
+        
+    def unread_messages(self):
+        """devuelve los mensajes sin leer """
+        return Message_receive.objects.filter(to=self , msg_read=False).count()
+        
+    def invitations(self):
+        """devuelve las invitaciones que tiene el usuario"""
+        return self.__class__.contact_invitation.through.objects.filter(to_userprofile = self).count()       
+    
+    def moderates(self, section_slug):
+        """Boolean value of user moderation rights of section_slug."""
+        return self.user.is_superuser or section_slug in self.modded()
+		
+def create_user_profile(sender, instance, created, **kwargs):
+    """Connects UserProfile class with builtit User."""
+    if created:
+        profile, created = UserProfile.objects.get_or_create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)  
+
+
+   
+        
+class UserProfileForm(forms.ModelForm):   
+	
+    birthdate = forms.DateField(label= _("Date of birth"),required=False, input_formats=('%d-%m-%Y','%Y-%m-%d'))   
+    class Meta:
+        model = UserProfile
+        exclude = ['sections','user']
+
+
+class UserForm(forms.ModelForm):
+	   
+    captcha = fields.ReCaptchaField(required=False)  
+    repassword = forms.CharField()
+	   
+    class Meta:
+        model = User
+        fields = ['username','email','password']
+     
+class ChangePassForm(forms.Form):
+	   
+    password_current = forms.CharField(label= _("Current password"),)
+    email = forms.EmailField(label= _("Email"),required=False)
+    new_password = forms.CharField(label= _("New password"),required=False)
+    confirm_password = forms.CharField(label= _("Confirm password"),required=False)  
+    
+   
+        
+
+        
+
+

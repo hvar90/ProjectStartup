@@ -1,0 +1,88 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>{{ settings.SITE_TITLE }} &mdash; {% trans "Main page" %}</title>
+  <link rel="stylesheet" href="{{ STATIC_URL }}css/index.css" media="all">
+  <script src="{{ STATIC_URL }}js/jquery.js"></script>
+  <script src="{{ STATIC_URL }}js/preload.js?v=13"></script>
+  <script src="{{ STATIC_URL }}js/plugins.js?v=19"></script>  
+  <script>
+    var media_url = '{{ settings.MEDIA_URL }}';
+    $(function() {
+      $('.mpHiderandom .random span').toggleClass('minimized');
+      $('.mpHidebookmarks .bookmarks span').toggleClass('minimized');
+      $('.wellcome p').click(function() {
+        $('.wellcome').hide('fast');
+      });
+
+      $('h4 span').click(function() {
+        var span = $(this);
+        span.toggleClass('minimized');
+        span.parent().parent().find('ul, .banner')
+        .slideToggle('slow', function() {
+          //$.settings('mpHide' + span.parent().attr('class'), span.hasClass('minimized'));
+        });
+      });
+
+      $('.set-d').click(function() {
+        $('.set-box').slideToggle('fast');
+      });
+      //funcion incompleta
+      /*$('.banner').click(function(event) {
+        event.preventDefault();
+        var banner = $(this);
+
+        $.get('api/1.0/file/random_image/1')
+        .success(function(data) {
+          data = data[0];
+          banner.find('img').attr('src', media_url + data.file);
+          banner.find('a').attr('href', media_url + data.thumb);
+        });
+
+        banner.find('a')
+      });*/
+    });
+  </script>
+</head>
+<body class="{{ session_classes }}">
+<div class="center">
+  {% include "header_index.html" %}
+  {% block content %}{% endblock %} 
+  
+  
+  
+  
+  
+  <form class=""  id="new_section"  method="GET" >	
+	   <div class="left checkbox1"><input type="checkbox"  value="{{nav}}" id="checkbox_search" ><label class="checkbox1">Limitar mi busqueda a categoria "{{nav}}"</label><h5><a href=".." >volver</a></h5></div>
+	   <div class="box_search right" >	  
+		  <fieldset>
+			 <legend>Buscador</legend>
+			 
+			 <label for="q">
+				<span>Búsqueda</span>
+				<input type="text" id="q" name="q" value="">
+			 </label>
+			 
+			 <input type="submit" value="Encontrar!">
+		  </fieldset>
+	   </div>	    
+	</form>	
+  
+  
+  
+  
+  
+  
+  
+  {% include "footer_index.html" %}
+  
+  
+  
+  
+</div>
+</body>
+</html>
+

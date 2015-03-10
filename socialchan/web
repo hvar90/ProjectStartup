@@ -1,0 +1,2 @@
+#!/bin/bash
+bin/start-nginx gunicorn socialchan.wsgi -c config/gunicorn.conf --log-file - --workers $WEB_CONCURRENCY

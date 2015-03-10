@@ -1,0 +1,50 @@
+{% extends "index_base.html" %}
+{% load  i18n  call_method %}
+
+{% block header %}
+<header class="headerv2">
+	<div class="centercontainer">
+		<h1>
+		  <a href="/">SCHAN</a>
+		</h1>
+		<nav class="wellcome">
+			<ul>			
+			  <li><a class="" href="javascript:history.back()">{% trans "Back" %}</a></li>	
+			  <li><a class="" href="/">Home</a></li>								
+			</ul>
+		</nav>
+	</div>
+</header>
+{% endblock %}	
+{% block content %}
+<section class="centercontainer mt20">
+	<div class="headline center-text">
+		<h3>{% trans "Your friends" %}</h3>
+	</div>	
+	{% if user.profile.contacts.all %}
+		<ul id="itemList" class="icon-list">
+			{% for friend in user.profile.contacts.all %}			 
+			  <li id="friend{{ friend.id }}">
+				 <a href="/user/{{ friend.user.username }}"> 
+				   <p class="line3">{% trans "View user profile" %}</p> 
+				 </a>
+				 <a href="/{{ user.profile|args:friend.id|call:"get_section_chat" }}/"> 
+					{% if friend.profile_picture %}				   	
+					   <img src="{{ MEDIA_URL }}{{ friend.profile_picture }}" height="100" width="100" class="list-icon"/> 			   
+					{% else %}			   
+					   <img src="{{ STATIC_URL }}image/user.png" height="100" width="100" class="list-icon"/> 
+					{% endif %}					
+					<p class="line1"> {{ friend.user.username }}</p> 
+					<p class="line2">{% trans "Click here to open the chat" %}</p> 				
+				 </a>
+				 <span class="bubble "><i class="fa fa-times cursor colorred removContact" id-contact={{ friend.id }}  >{% trans "Delete" %}</i></span>
+			  </li>		
+			{% endfor %}		 
+		</ul>
+	{% else %}	
+	  <div class="text mt20">{% trans "You do not have friends by the moment, invite someone so that he be your friend" %}.</div>						 	
+	{% endif %}	
+</section>
+{% endblock %}
+
+

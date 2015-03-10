@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gunicorn socialchan.wsgi --log-file - & python pubsub.py

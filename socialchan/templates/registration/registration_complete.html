@@ -1,0 +1,13 @@
+{% extends "index_base.html" %}
+{% load i18n %}
+{% block wellcome %} {% endblock %} 
+{% block content %} 
+  <div class=" box1">
+	<h3><a href="/." >{% trans "Main page" %}</a></h3>
+	<div class="info-registration">
+	  <h1>{% trans "Check your email" %}</h1>
+      <p>{% trans "An activation link has been sent to the email address you supplied, along with instructions for activating your account" %}.</p>		
+	</div>
+  </div>  
+{% endblock %}
+{% block main %} {% endblock %} 

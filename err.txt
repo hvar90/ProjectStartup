@@ -1,0 +1,2 @@
+raise exceptions.ConnectionClosed
+» 21:18:23.902 2015-02-14 02:18:23.720968+00:00 app worker.1 - - pika.exceptions.ConnectionClosed
